@@ -4,7 +4,6 @@
   "type": "module",
   "scripts": {
     "assemble": "node scripts/assemble-index.mjs",
-    "prebuild": "npm run assemble",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
