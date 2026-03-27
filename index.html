@@ -247,58 +247,13 @@
   <div class="si twin-si">
     <div class="twin-grid">
       <div class="twin-visual-wrap reveal">
-        <div class="twin-visual-card" tabindex="0" role="img" aria-label="Data points assemble into a commercial building. Hover or focus to animate.">
+        <div class="twin-visual-card" tabindex="0" role="region" aria-label="Interactive 4D campus digital twin. Hover to engage mapping; drag to orbit, scroll to zoom.">
           <div class="twin-visual-glow" aria-hidden="true"></div>
           <div class="twin-visual-mesh" aria-hidden="true"></div>
-          <svg class="twin-svg" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
-            <defs>
-              <linearGradient id="twinStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#06B6D4"/>
-                <stop offset="42%" stop-color="#5E55F0"/>
-                <stop offset="100%" stop-color="#EB9EFF"/>
-              </linearGradient>
-              <linearGradient id="twinFill" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="rgba(6,182,212,0.18)"/>
-                <stop offset="55%" stop-color="rgba(100,1,227,0.1)"/>
-                <stop offset="100%" stop-color="rgba(235,158,255,0.08)"/>
-              </linearGradient>
-            </defs>
-            <!-- Soft ground -->
-            <ellipse cx="200" cy="268" rx="140" ry="14" fill="url(#twinFill)" opacity="0.55"/>
-            <!-- Scattered network (hidden on hover) -->
-            <g class="twin-constellation" fill="none" stroke="url(#twinStroke)" stroke-width="1" stroke-linecap="round" opacity="0.42">
-              <path d="M48 48 L352 60"/>
-              <path d="M352 60 L372 200"/>
-              <path d="M372 200 L200 305"/>
-              <path d="M200 305 L28 210"/>
-              <path d="M28 210 L200 24"/>
-              <path d="M200 24 L48 48"/>
-            </g>
-            <!-- Lines from each data point toward building anchors (draw on hover) -->
-            <g class="twin-bldg-connectors" fill="none" stroke="url(#twinStroke)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
-              <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M48 48 L100 85"/>
-              <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M352 60 L300 85"/>
-              <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M372 200 L300 245"/>
-              <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M200 305 L200 245"/>
-              <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M28 210 L100 245"/>
-              <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M200 24 L200 85"/>
-            </g>
-            <!-- Commercial facade: shell + curtain wall grid + entry -->
-            <g class="twin-bldg-frame" fill="none" stroke="url(#twinStroke)" stroke-linecap="round" stroke-linejoin="round">
-              <path class="twin-bldg-shell" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke-width="2.1" d="M100 245 L300 245 L300 80 L100 80 Z"/>
-              <path class="twin-bldg-grid" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke-width="1.15" opacity="0.92" d="M100 100 L300 100 M100 130 L300 130 M100 160 L300 160 M100 190 L300 190 M140 80 L140 220 M200 80 L200 220 M260 80 L260 220 M175 245 L175 215 L225 215 L225 245"/>
-            </g>
-            <!-- Data points (move to anchors on hover) -->
-            <g class="twin-bldg-points" fill="url(#twinStroke)">
-              <g class="twin-bldg-dp twin-bldg-dp--1"><circle r="5" cx="0" cy="0"/></g>
-              <g class="twin-bldg-dp twin-bldg-dp--2"><circle r="5" cx="0" cy="0"/></g>
-              <g class="twin-bldg-dp twin-bldg-dp--3"><circle r="5" cx="0" cy="0"/></g>
-              <g class="twin-bldg-dp twin-bldg-dp--4"><circle r="5" cx="0" cy="0"/></g>
-              <g class="twin-bldg-dp twin-bldg-dp--5"><circle r="5" cx="0" cy="0"/></g>
-              <g class="twin-bldg-dp twin-bldg-dp--6"><circle r="5" cx="0" cy="0"/></g>
-            </g>
-          </svg>
-          <p class="twin-visual-hint">Hover to assemble</p>
+          <div class="twin-canvas-host">
+            <canvas id="twin-4d-canvas" class="twin-canvas" aria-hidden="true"></canvas>
+          </div>
+          <p class="twin-visual-hint">Hover to reveal twin</p>
           <p class="twin-visual-note"><span>Space</span><span aria-hidden="true">&middot;</span><span>Time</span><span aria-hidden="true">&middot;</span><span>Systems</span><span aria-hidden="true">&middot;</span><span>Outcomes</span></p>
         </div>
       </div>

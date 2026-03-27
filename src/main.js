@@ -1,5 +1,6 @@
 import './styles.css';
 import { initLidarCanvas } from './lidar-canvas.js';
+import { initTwin4dCanvas } from './twin-4d-canvas.js';
 
 document.documentElement.classList.add('js-ready');
 document.body.classList.add('js-ready');
@@ -341,3 +342,4 @@ if (leadForm && leadStatus) {
 }
 
 initLidarCanvas();
+initTwin4dCanvas(document.getElementById('twin-4d-canvas'));
