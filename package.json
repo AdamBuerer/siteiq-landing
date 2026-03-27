@@ -1,13 +1,17 @@
 {
   "name": "siteiq-landing",
-  "version": "1.0.0",
-  "description": "Site IQ - AI Facility Management Platform landing page",
+  "private": true,
+  "type": "module",
   "scripts": {
+    "assemble": "node scripts/assemble-index.mjs",
+    "prebuild": "npm run assemble",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lhci": "lhci collect"
   },
   "devDependencies": {
-    "vite": "^6.0.0"
+    "@lhci/cli": "^0.14.0",
+    "vite": "^6.2.0"
   }
 }
