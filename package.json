@@ -6,6 +6,7 @@
     "assemble": "node scripts/assemble-index.mjs",
     "dev": "vite",
     "build": "vite build",
+    "build:home": "vite build && node scripts/trim-home-html.mjs",
     "preview": "vite preview",
     "lhci": "lhci collect"
   },
