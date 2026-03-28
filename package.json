@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:home": "vite build && node scripts/trim-home-html.mjs",
+    "vercel-build": "node scripts/vercel-build.mjs",
     "preview": "vite preview",
     "lhci": "lhci collect"
   },
