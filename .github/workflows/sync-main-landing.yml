@@ -1,0 +1,28 @@
+# Keeps main and landing pointing at the same commit so Vercel (and git) stay aligned.
+# Push to either branch → the other branch fast-forwards to match.
+name: Sync main and landing
+
+on:
+  push:
+    branches: [main, landing]
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Mirror to sibling branch
+        env:
+          SHA: ${{ github.sha }}
+          REF: ${{ github.ref_name }}
+        run: |
+          set -e
+          if [ "$REF" = "main" ]; then
+            git push origin "$SHA:refs/heads/landing"
+          elif [ "$REF" = "landing" ]; then
+            git push origin "$SHA:refs/heads/main"
+          fi
