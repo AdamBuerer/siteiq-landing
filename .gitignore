@@ -6,3 +6,5 @@ dist
 .env.*.local
 *.log
 .lighthouseci
+# Local zip snapshots (keep backups/README.txt)
+backups/*.zip
