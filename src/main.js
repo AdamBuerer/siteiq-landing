@@ -319,6 +319,19 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+const zohoLeadFormSrc = import.meta.env.VITE_ZOHO_LEAD_FORM_URL?.trim();
+const leadMount = document.getElementById('lead-form-mount');
+if (zohoLeadFormSrc && leadMount) {
+  leadMount.innerHTML = '';
+  const iframe = document.createElement('iframe');
+  iframe.className = 'zoho-lead-iframe';
+  iframe.title = 'Request a consultation';
+  iframe.setAttribute('loading', 'lazy');
+  iframe.referrerPolicy = 'no-referrer-when-downgrade';
+  iframe.src = zohoLeadFormSrc;
+  leadMount.appendChild(iframe);
+}
+
 const leadForm = document.getElementById('lead-form');
 const leadStatus = document.getElementById('lead-status');
 const leadEndpoint = import.meta.env.VITE_LEAD_ENDPOINT;
@@ -328,10 +341,12 @@ if (leadForm && leadStatus) {
     e.preventDefault();
     const name = leadForm.querySelector('#lead-name')?.value?.trim() ?? '';
     const email = leadForm.querySelector('#lead-email')?.value?.trim() ?? '';
+    const company = leadForm.querySelector('#lead-company')?.value?.trim() ?? '';
     const note = leadForm.querySelector('#lead-note')?.value?.trim() ?? '';
 
     if (!leadEndpoint) {
-      leadStatus.textContent = 'Lead capture is not configured yet (set VITE_LEAD_ENDPOINT).';
+      leadStatus.textContent =
+        'Lead capture is not configured yet. Set VITE_ZOHO_LEAD_FORM_URL (Zoho embed) or VITE_LEAD_ENDPOINT (API).';
       return;
     }
 
@@ -343,7 +358,7 @@ if (leadForm && leadStatus) {
       const res = await fetch(leadEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ name, email, note }),
+        body: JSON.stringify({ name, email, company, note }),
       });
       if (!res.ok) throw new Error(String(res.status));
       leadStatus.textContent = 'Thanks — we will be in touch shortly.';
