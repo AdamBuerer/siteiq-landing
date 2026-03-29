@@ -647,7 +647,7 @@ body.nav-drawer-open{overflow:hidden;touch-action:none}
   min-height:min(280px,52vw);
   aspect-ratio:4/3;
   max-height:400px;
-  cursor:pointer;
+  cursor:default;
   outline:none;
 }
 .twin-visual-card:focus-visible{
@@ -675,20 +675,18 @@ body.nav-drawer-open{overflow:hidden;touch-action:none}
   background:radial-gradient(ellipse 80% 60% at 70% 20%,rgba(196,174,255,.12) 0%,transparent 55%),radial-gradient(ellipse 55% 45% at 20% 80%,rgba(6,182,212,.1) 0%,transparent 50%);
   pointer-events:none;
 }
-.twin-canvas-host{
+.twin-static-host{
   position:absolute;
   inset:0;
   z-index:1;
+  overflow:hidden;
 }
-.twin-canvas{
+.twin-static-art{
   display:block;
   width:100%;
   height:100%;
-  touch-action:none;
-  cursor:grab;
-}
-.twin-canvas:active{
-  cursor:grabbing;
+  object-fit:cover;
+  object-position:center 42%;
 }
 .twin-visual-hint{
   position:absolute;
@@ -707,9 +705,12 @@ body.nav-drawer-open{overflow:hidden;touch-action:none}
   transition:opacity 0.35s ease;
   pointer-events:none;
 }
-.twin-visual-card:hover .twin-visual-hint,
-.twin-visual-card:focus-within .twin-visual-hint{
+.twin-visual-card:hover .twin-visual-hint:not(.twin-visual-hint--static),
+.twin-visual-card:focus-within .twin-visual-hint:not(.twin-visual-hint--static){
   opacity:0;
+}
+.twin-visual-hint--static{
+  opacity:.88;
 }
 /* Touch / no-hover */
 @media(hover:none){

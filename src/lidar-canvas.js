@@ -21,7 +21,13 @@ export function initLidarCanvas() {
   let padX = 0;
   let t = 0;
   let rafId = 0;
+  /** Pause rAF when hero scrolls out of view (saves CPU while reading lower sections). */
+  let heroInView = true;
   const container = document.getElementById('hero-animation-canvas');
+
+  function shouldAnimate() {
+    return !reduceMotion && !document.hidden && heroInView;
+  }
 
   const palette = [
     '100,1,227',
@@ -120,7 +126,9 @@ export function initLidarCanvas() {
     const ch = nextH;
     padX = isDesktopHeroRow() ? SHIFT_PAD_PX : 0;
     const cw = colW + 2 * padX;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rawDpr = window.devicePixelRatio || 1;
+    const dprCap = colW <= 480 ? 1.5 : 2;
+    const dpr = Math.min(rawDpr, dprCap);
     canvas.style.width = `${cw}px`;
     canvas.style.height = `${ch}px`;
     canvas.width = Math.round(cw * dpr);
@@ -136,7 +144,7 @@ export function initLidarCanvas() {
   function runResizeAndMaybeDraw() {
     resize();
     if (reduceMotion) draw(performance.now());
-    else if (!document.hidden) {
+    else if (shouldAnimate()) {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(draw);
     }
@@ -186,6 +194,7 @@ export function initLidarCanvas() {
     const path = new Path2D();
     const top = -h * 0.14;
     const bottom = h * 1.14;
+    const yStep = colW <= 560 ? 26 : 22;
     const time = t * band.speed + layerOffset;
     const depth = band.depth;
     const bw = band.width * depth;
@@ -195,7 +204,7 @@ export function initLidarCanvas() {
     const rdx = -4 * (depth - 1);
     const rdy = -10 * (depth - 1) + (band.lift || 0) * 0.35;
 
-    for (let yy = top; yy <= bottom; yy += 22) {
+    for (let yy = top; yy <= bottom; yy += yStep) {
       const x = bandX(band.base * colW, yy / h, time, band.bend, band.drift, band.phase);
       if (yy === top) path.moveTo(x, yy);
       else path.lineTo(x, yy);
@@ -357,7 +366,7 @@ export function initLidarCanvas() {
     ctx.fillStyle = fade;
     ctx.fillRect(0, 0, w, h);
 
-    if (!reduceMotion && !document.hidden) rafId = requestAnimationFrame(draw);
+    if (shouldAnimate()) rafId = requestAnimationFrame(draw);
   }
 
   resize();
@@ -366,7 +375,7 @@ export function initLidarCanvas() {
     'visibilitychange',
     () => {
       if (reduceMotion) return;
-      if (document.hidden) {
+      if (!shouldAnimate()) {
         cancelAnimationFrame(rafId);
         lastFrameTs = 0;
       } else {
@@ -377,6 +386,26 @@ export function initLidarCanvas() {
     },
     { passive: true }
   );
+
+  if (container && typeof IntersectionObserver !== 'undefined') {
+    const io = new IntersectionObserver(
+      (entries) => {
+        const vis = entries.some((e) => e.isIntersecting);
+        heroInView = vis;
+        if (reduceMotion) return;
+        if (!shouldAnimate()) {
+          cancelAnimationFrame(rafId);
+          lastFrameTs = 0;
+        } else {
+          lastFrameTs = 0;
+          cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(draw);
+        }
+      },
+      { root: null, rootMargin: '80px 0px 80px 0px', threshold: 0 }
+    );
+    io.observe(container);
+  }
 
   if (container && typeof ResizeObserver !== 'undefined') {
     new ResizeObserver(scheduleResize).observe(container);

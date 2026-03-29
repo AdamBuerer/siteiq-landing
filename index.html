@@ -19,7 +19,8 @@
 <link rel="apple-touch-icon" href="/favicon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&amp;display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&amp;display=swap"/></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"SiteIQ","url":"%SITE_URL%/","logo":"%SITE_URL%/favicon.svg"},{"@type":"WebSite","name":"SiteIQ","url":"%SITE_URL%/","description":"AI facility management platform for intelligent buildings."}]}</script>
 <script type="module" src="/src/main.js"></script>
 </head>
@@ -247,13 +248,13 @@
   <div class="si twin-si">
     <div class="twin-grid">
       <div class="twin-visual-wrap reveal">
-        <div class="twin-visual-card" tabindex="0" role="region" aria-label="Interactive 4D campus digital twin. Hover to engage mapping; drag to orbit, scroll to zoom.">
+        <div class="twin-visual-card" role="img" aria-label="Illustration: unified 4D facility model across space, behavior, cost, and outcome.">
           <div class="twin-visual-glow" aria-hidden="true"></div>
           <div class="twin-visual-mesh" aria-hidden="true"></div>
-          <div class="twin-canvas-host">
-            <canvas id="twin-4d-canvas" class="twin-canvas" aria-hidden="true"></canvas>
+          <div class="twin-static-host">
+            <img class="twin-static-art" src="/twin-static.png" width="1024" height="807" alt="Spatial knowledge graph visualization: wireframe campus volumes, mapping status, and fleet telemetry on a dark grid." loading="lazy" decoding="async"/>
           </div>
-          <p class="twin-visual-hint">Hover to reveal twin</p>
+          <p class="twin-visual-hint twin-visual-hint--static">Digital twin visualization</p>
           <p class="twin-visual-note"><span>Space</span><span aria-hidden="true">&middot;</span><span>Behavior</span><span aria-hidden="true">&middot;</span><span>Cost</span><span aria-hidden="true">&middot;</span><span>Outcome</span></p>
         </div>
       </div>

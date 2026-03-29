@@ -6,6 +6,10 @@ export default defineConfig(({ mode }) => {
   const ogImage = env.VITE_OG_IMAGE || `${site}/og-image.svg`;
 
   return {
+    build: {
+      target: 'es2020',
+      cssMinify: true,
+    },
     plugins: [
       {
         name: 'html-site-url',
