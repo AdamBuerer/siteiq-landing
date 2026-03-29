@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:home": "vite --mode home --port 5174 --strictPort",
     "build": "vite build",
-    "build:home": "vite build --mode home && node scripts/trim-home-html.mjs",
+    "build:home": "vite build --mode home",
     "vercel-build": "node scripts/vercel-build.mjs",
     "preview": "vite preview",
     "lhci": "lhci collect"
