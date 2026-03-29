@@ -12,6 +12,9 @@ export function initLidarCanvas() {
   let w = 0;
   let h = 0;
   let colW = 0;
+  /** Skip tiny height-only changes (mobile browser chrome) to avoid canvas clear/flicker */
+  let lastOuterW = 0;
+  let lastOuterH = 0;
   let padX = 0;
   let t = 0;
   let rafId = 0;
@@ -97,8 +100,19 @@ export function initLidarCanvas() {
 
   function resize() {
     const outer = container || canvas.parentElement;
-    colW = Math.max(1, Math.round(outer.clientWidth || canvas.offsetWidth));
-    const ch = Math.max(1, Math.round(outer.clientHeight || canvas.offsetHeight));
+    const nextW = Math.max(1, Math.round(outer.clientWidth || canvas.offsetWidth));
+    const nextH = Math.max(1, Math.round(outer.clientHeight || canvas.offsetHeight));
+    if (
+      lastOuterW > 0 &&
+      nextW === lastOuterW &&
+      Math.abs(nextH - lastOuterH) < 64
+    ) {
+      return;
+    }
+    lastOuterW = nextW;
+    lastOuterH = nextH;
+    colW = nextW;
+    const ch = nextH;
     padX = isDesktopHeroRow() ? SHIFT_PAD_PX : 0;
     const cw = colW + 2 * padX;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -113,17 +127,29 @@ export function initLidarCanvas() {
   }
 
   let resizeRaf = 0;
+  let resizeDebounceTimer = 0;
+  function runResizeAndMaybeDraw() {
+    resize();
+    if (reduceMotion) draw();
+    else if (!document.hidden && isIntersecting) {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(draw);
+    }
+  }
   function scheduleResize() {
     cancelAnimationFrame(resizeRaf);
     resizeRaf = requestAnimationFrame(() => {
       resizeRaf = 0;
-      resize();
-      if (reduceMotion) draw();
-      else if (!document.hidden && isIntersecting) {
-        cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(draw);
-      }
+      runResizeAndMaybeDraw();
     });
+  }
+  /** Window / visualViewport bounce often during scroll; debounce to avoid clearing the canvas repeatedly */
+  function scheduleResizeDebounced() {
+    clearTimeout(resizeDebounceTimer);
+    resizeDebounceTimer = setTimeout(() => {
+      resizeDebounceTimer = 0;
+      scheduleResize();
+    }, 110);
   }
 
   function bandX(base, yNorm, time, bend, drift, phase) {
@@ -335,7 +361,7 @@ export function initLidarCanvas() {
           rafId = requestAnimationFrame(draw);
         }
       },
-      { threshold: 0.02, rootMargin: '0px 0px 80px 0px' }
+      { threshold: 0, rootMargin: '120px 0px 120px 0px' }
     ).observe(observeTarget);
   }
 
@@ -355,9 +381,9 @@ export function initLidarCanvas() {
   if (container && typeof ResizeObserver !== 'undefined') {
     new ResizeObserver(scheduleResize).observe(container);
   }
-  window.addEventListener('resize', scheduleResize);
+  window.addEventListener('resize', scheduleResizeDebounced);
   if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', scheduleResize);
+    window.visualViewport.addEventListener('resize', scheduleResizeDebounced);
   }
   if (typeof window.matchMedia !== 'undefined') {
     window.matchMedia('(min-width: 768px)').addEventListener('change', scheduleResize);

@@ -38,7 +38,7 @@ html{scroll-behavior:smooth}
 body{font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--page-gutter-x);background:rgba(255,255,255,0.92);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--page-gutter-x);background:rgba(255,255,255,0.92);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border);isolation:isolate}
 .nav-logo{display:flex;flex-direction:column;gap:3px;align-items:flex-start;text-decoration:none}
 .nav-logo img,.footer-logo{height:80px;width:120px;object-fit:contain}
 .nav-tagline{font-family:'Geist','DM Sans',sans-serif;font-size:10px;letter-spacing:.08em;color:var(--purple);font-weight:500;text-transform:uppercase}
@@ -102,6 +102,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:
 .btn-ghost:hover{color:var(--ink);background:var(--bg);border-color:var(--border)}
 .btn-nav{font-size:13.5px;font-weight:600;color:#fff;text-decoration:none;padding:8px 20px;border-radius:9px;letter-spacing:-.01em;transition:all .18s;box-shadow:0 1px 3px rgba(100,1,227,.28),0 4px 14px rgba(6,182,212,.15);background:var(--grad-brand);white-space:nowrap;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center}
 .btn-nav:hover{background:var(--grad-brand-hover);transform:translateY(-1px);box-shadow:0 2px 6px rgba(100,1,227,.32),0 8px 24px var(--logo-cyan-glow)}
+
+/* Home-only build (VITE_HOME_ONLY): logo + right CTAs; no mega menus or mobile drawer */
+html.home-only .nav-links{display:none!important}
+html.home-only #nav-toggle{display:none!important}
+html.home-only #nav-drawer{display:none!important;visibility:hidden!important;pointer-events:none!important}
+html.home-only .nav-item.open .mega-menu,
+html.home-only .nav-item:hover .mega-menu{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
 
 /* Hamburger — only <1024px (tablet/phone); full bar from 1024px up hides toggle */
 .nav-toggle{
@@ -456,10 +463,10 @@ body.nav-drawer-open{overflow:hidden;touch-action:none}
     min-height:calc(100dvh + 24px);
   }
 }
-.hero-mesh{position:absolute;top:-80px;right:-100px;width:700px;height:850px;pointer-events:none;z-index:1}
+.hero-mesh{position:absolute;top:-80px;right:-100px;width:700px;height:850px;pointer-events:none;z-index:1;transform:translateZ(0);backface-visibility:hidden}
 .hero-mesh::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 65% 25%,rgba(112,72,232,.12) 0%,transparent 55%),radial-gradient(ellipse 45% 55% at 80% 15%,rgba(4,2,195,.08) 0%,transparent 50%);filter:blur(2px)}
 .hero-mesh::after{content:'';position:absolute;inset:-14%;background:radial-gradient(ellipse 52% 48% at 38% 68%,rgba(196,174,255,.08) 0%,transparent 58%),radial-gradient(ellipse 46% 52% at 86% 36%,rgba(6,182,212,.06) 0%,transparent 52%);filter:blur(2.5px);pointer-events:none}
-.hero-gridlines{position:absolute;top:0;right:0;width:60%;height:100%;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(100,1,227,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(100,1,227,.03) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 80% at 60% 40%,black 20%,transparent 75%)}
+.hero-gridlines{position:absolute;top:0;right:0;width:60%;height:100%;pointer-events:none;z-index:0;transform:translateZ(0);backface-visibility:hidden;background-image:linear-gradient(rgba(100,1,227,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(100,1,227,.03) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 80% at 60% 40%,black 20%,transparent 75%)}
 .hero{
   flex:1 1 auto;
   width:100%;
@@ -506,6 +513,9 @@ body.nav-drawer-open{overflow:hidden;touch-action:none}
   box-sizing:border-box;
   overflow:hidden;
   pointer-events:none;
+  transform:translateZ(0);
+  backface-visibility:hidden;
+  isolation:isolate;
 }
 /* Desktop hero: LiDAR full-bleed behind copy (hero-l transparent); buffer + wider copy column */
 @media(min-width:768px){
@@ -552,13 +562,13 @@ body.nav-drawer-open{overflow:hidden;touch-action:none}
   height:100%;
   display:block;
   box-sizing:border-box;
-  filter:saturate(1.22) contrast(1.07);
+  filter:saturate(1.18) contrast(1.05);
 }
+/* Normal blend + isolated stack: avoids scroll flicker from mix-blend-mode compositing */
 #lidar-canvas{
-  opacity:0.92;
-  mix-blend-mode:multiply;
+  opacity:0.9;
   max-width:100%;
-  transform:rotate(720deg) scaleY(-1);
+  transform:rotate(720deg) scaleY(-1) translateZ(0);
 }
 .hero-l{position:relative;z-index:2;flex:0 1 auto;width:auto;max-width:560px;min-width:0;align-self:center;padding:clamp(8px,1.5vh,20px) 0 0 var(--page-gutter-x);box-sizing:border-box;order:1}
 .hero-eyebrow{font-family:var(--font-label);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom:24px;display:flex;align-items:center;gap:10px}
@@ -1061,6 +1071,15 @@ a:hover .arr{transform:translateX(3px)}
 }
 @media(max-width:767px){
   :root{--nav-h:60px}
+  /* Stronger bar + lighter blur: less chroma flicker when content scrolls under fixed nav */
+  nav{
+    background:rgba(255,255,255,0.97);
+    backdrop-filter:blur(14px) saturate(160%);
+    -webkit-backdrop-filter:blur(14px) saturate(160%);
+  }
+  .hero-lidar-canvas{
+    filter:saturate(1.08) contrast(1.03);
+  }
   /* Hero: stacked layout + LiDAR behind copy (phones only; tablet keeps side-by-side LiDAR) */
   .hero{
     flex:1 1 auto;
@@ -1482,6 +1501,14 @@ a:hover .arr{transform:translateX(3px)}
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .js-ready .hero-eyebrow,
+  .js-ready .hero-h1,
+  .js-ready .hero-sub,
+  .js-ready .hero-ctas{
+    animation:none!important;
+    opacity:1;
+    transform:none;
+  }
   .fc-v1::before, .fc-v1::after,
   .fc-v2::before, .fc-v2::after,
   .fc-v3::before, .fc-v3::after,
