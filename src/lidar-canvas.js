@@ -1,11 +1,14 @@
 /**
- * Hero LiDAR-style canvas — pauses when off-screen or tab hidden.
+ * Hero LiDAR-style canvas — pauses when tab hidden only (keeps moving while scrolling).
+ * Time uses rAF timestamps so speed stays consistent if frame rate drops.
  */
 export function initLidarCanvas() {
   const canvas = document.getElementById('lidar-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /** Wall-clock animation time (matches old 60fps `t += 1/60` behavior). */
+  let lastFrameTs = 0;
 
   /** Left bleed + shift: desktop only; paired with CSS inner offset so art moves ~125px left on screen. */
   const SHIFT_PAD_PX = 125;
@@ -18,7 +21,6 @@ export function initLidarCanvas() {
   let padX = 0;
   let t = 0;
   let rafId = 0;
-  let isIntersecting = true;
   const container = document.getElementById('hero-animation-canvas');
 
   const palette = [
@@ -100,8 +102,11 @@ export function initLidarCanvas() {
 
   function resize() {
     const outer = container || canvas.parentElement;
-    const nextW = Math.max(1, Math.round(outer.clientWidth || canvas.offsetWidth));
-    const nextH = Math.max(1, Math.round(outer.clientHeight || canvas.offsetHeight));
+    const inner = canvas.parentElement;
+    const box = inner && inner !== outer ? inner : outer;
+    const rect = box.getBoundingClientRect();
+    const nextW = Math.max(1, Math.round(rect.width));
+    const nextH = Math.max(1, Math.round(rect.height));
     if (
       lastOuterW > 0 &&
       nextW === lastOuterW &&
@@ -130,8 +135,8 @@ export function initLidarCanvas() {
   let resizeDebounceTimer = 0;
   function runResizeAndMaybeDraw() {
     resize();
-    if (reduceMotion) draw();
-    else if (!document.hidden && isIntersecting) {
+    if (reduceMotion) draw(performance.now());
+    else if (!document.hidden) {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(draw);
     }
@@ -143,13 +148,13 @@ export function initLidarCanvas() {
       runResizeAndMaybeDraw();
     });
   }
-  /** Window / visualViewport bounce often during scroll; debounce to avoid clearing the canvas repeatedly */
+  /** Window / visualViewport bounce during mobile chrome show/hide; short debounce limits canvas clears */
   function scheduleResizeDebounced() {
     clearTimeout(resizeDebounceTimer);
     resizeDebounceTimer = setTimeout(() => {
       resizeDebounceTimer = 0;
       scheduleResize();
-    }, 110);
+    }, 72);
   }
 
   function bandX(base, yNorm, time, bend, drift, phase) {
@@ -316,8 +321,15 @@ export function initLidarCanvas() {
     ctx.restore();
   }
 
-  function draw() {
-    if (!reduceMotion) t += 1 / 60;
+  function draw(ts) {
+    if (!reduceMotion) {
+      const now = ts ?? performance.now();
+      if (lastFrameTs) {
+        const dt = Math.min((now - lastFrameTs) / 1000, 0.05);
+        t += dt;
+      }
+      lastFrameTs = now;
+    }
     ctx.clearRect(0, 0, w, h);
 
     drawBand(bands[0], 0.0);
@@ -345,32 +357,20 @@ export function initLidarCanvas() {
     ctx.fillStyle = fade;
     ctx.fillRect(0, 0, w, h);
 
-    const run = !document.hidden && isIntersecting;
-    if (!reduceMotion && run) rafId = requestAnimationFrame(draw);
+    if (!reduceMotion && !document.hidden) rafId = requestAnimationFrame(draw);
   }
 
   resize();
-  const observeTarget = container || canvas;
-  if (typeof IntersectionObserver !== 'undefined') {
-    new IntersectionObserver(
-      (entries) => {
-        isIntersecting = entries.some((e) => e.isIntersecting);
-        if (reduceMotion) return;
-        if (isIntersecting && !document.hidden) {
-          cancelAnimationFrame(rafId);
-          rafId = requestAnimationFrame(draw);
-        }
-      },
-      { threshold: 0, rootMargin: '120px 0px 120px 0px' }
-    ).observe(observeTarget);
-  }
 
   document.addEventListener(
     'visibilitychange',
     () => {
       if (reduceMotion) return;
-      if (document.hidden) cancelAnimationFrame(rafId);
-      else if (isIntersecting) {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+        lastFrameTs = 0;
+      } else {
+        lastFrameTs = 0;
         cancelAnimationFrame(rafId);
         rafId = requestAnimationFrame(draw);
       }
@@ -388,6 +388,6 @@ export function initLidarCanvas() {
   if (typeof window.matchMedia !== 'undefined') {
     window.matchMedia('(min-width: 768px)').addEventListener('change', scheduleResize);
   }
-  if (reduceMotion) draw();
+  if (reduceMotion) draw(performance.now());
   else rafId = requestAnimationFrame(draw);
 }

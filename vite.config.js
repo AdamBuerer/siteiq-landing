@@ -6,15 +6,6 @@ export default defineConfig(({ mode }) => {
   const ogImage = env.VITE_OG_IMAGE || `${site}/og-image.svg`;
 
   return {
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes('node_modules/three')) return 'three';
-          },
-        },
-      },
-    },
     plugins: [
       {
         name: 'html-site-url',
