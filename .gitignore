@@ -8,3 +8,4 @@ dist
 .lighthouseci
 # Local zip snapshots (keep backups/README.txt)
 backups/*.zip
+.vercel
