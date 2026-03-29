@@ -85,8 +85,8 @@ const head = `<!DOCTYPE html>
 <meta name="twitter:title" content="Every Building, Intelligent. — SiteIQ"/>
 <meta name="twitter:description" content="Turn your facility into a living, intelligent system. SiteIQ unifies robots, sensors, energy, and teams in one AI platform built for hospitals, universities, airports, and campuses."/>
 <meta name="twitter:image" content="%OG_IMAGE%"/>
+<link rel="icon" href="/favicon.png" type="image/png" sizes="64x64"/>
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32"/>
-<link rel="icon" href="/favicon.png" type="image/png" sizes="900x900"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>

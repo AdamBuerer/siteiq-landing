@@ -15,8 +15,8 @@
 <meta name="twitter:title" content="Every Building, Intelligent. — SiteIQ"/>
 <meta name="twitter:description" content="Turn your facility into a living, intelligent system. SiteIQ unifies robots, sensors, energy, and teams in one AI platform built for hospitals, universities, airports, and campuses."/>
 <meta name="twitter:image" content="%OG_IMAGE%"/>
+<link rel="icon" href="/favicon.png" type="image/png" sizes="64x64"/>
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32"/>
-<link rel="icon" href="/favicon.png" type="image/png" sizes="900x900"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -194,7 +194,7 @@
   </ul>
   <div class="nav-right">
     <a href="https://www.siteiqtechnologies.com/web/login?redirect=/index" class="btn-ghost" rel="noopener noreferrer" target="_blank">Sign in</a>
-    <a href="#contact" class="btn-nav">Talk to us &rarr;</a>
+    <a href="#contact" class="btn-nav js-open-lead-modal">Talk to us &rarr;</a>
     <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
       <span class="nav-toggle-bar" aria-hidden="true"></span>
       <span class="nav-toggle-bar" aria-hidden="true"></span>
@@ -215,7 +215,7 @@
     <ul class="nav-drawer-list"></ul>
     <div class="nav-drawer-footer">
       <a href="https://www.siteiqtechnologies.com/web/login?redirect=/index" class="btn-ghost nav-drawer-footer-ghost" rel="noopener noreferrer" target="_blank">Sign in</a>
-      <a href="#contact" class="btn-nav nav-drawer-footer-cta">Talk to us &rarr;</a>
+      <a href="#contact" class="btn-nav nav-drawer-footer-cta js-open-lead-modal">Talk to us &rarr;</a>
     </div>
   </div>
 </div>
@@ -237,8 +237,8 @@
       <h1 class="hero-h1">SiteIQ &mdash; <br class="hero-h1-br-dash"/><span class="hl"><span class="hero-h1-eb">Every Building,</span><br class="hero-h1-br-eb"/><span class="hero-h1-tail"> Intelligent.</span></span></h1>
       <p class="hero-sub">One platform that connects your robots, sensors, energy systems, and teams &mdash; and makes every building decision automatically.</p>
       <div class="hero-ctas">
-        <a href="#" class="btn-hero-p">See how it works <span class="arr">&rarr;</span></a>
-        <a href="#contact" class="btn-hero-o">Talk to us</a>
+        <a href="#ai-agents" class="btn-hero-p">See how it works <span class="arr">&rarr;</span></a>
+        <a href="#contact" class="btn-hero-o js-open-lead-modal">Talk to us</a>
       </div>
     </div>
   </div>
@@ -303,11 +303,11 @@
 </section>
 
 <!-- AI AGENTS -->
-<section class="sw agents-bg">
+<section class="sw agents-bg" id="ai-agents" aria-labelledby="agents-heading">
   <div class="si">
     <div class="agents-head reveal">
       <span class="chip"><span class="chip-d"></span>AI and Intelligence &mdash; the intelligence layer behind everything</span>
-      <h2 class="h2">Four AI Agents. One Closed Loop. Fully Automated.</h2>
+      <h2 class="h2" id="agents-heading">Four AI Agents. One Closed Loop. Fully Automated.</h2>
       <p class="lead">Four specialized AI agents operate as a closed-loop system that continuously: observe &rarr; interpret &rarr; decide &rarr; execute &rarr; communicate. No manual coordination. No fragmented tools.</p>
     </div>
     <div class="ag-grid">
@@ -652,5 +652,36 @@
     </div>
   </div>
 </footer>
+
+<div id="lead-modal" class="lead-modal" hidden>
+  <div class="lead-modal-backdrop" tabindex="-1" aria-hidden="true"></div>
+  <div class="lead-modal-panel" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+    <div class="lead-modal-head">
+      <h2 id="lead-modal-title" class="lead-modal-title">Talk to us</h2>
+      <button type="button" class="lead-modal-close" aria-label="Close dialog">
+        <svg class="lead-modal-close-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="lead-modal-body">
+      <div id="lead-form-modal-mount" class="lead-form-mount">
+        <form id="lead-form-modal" class="lead-form-native" style="display:flex;flex-direction:column;gap:10px" method="post" action="#">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <label class="sr-only" for="lead-modal-name">Name</label>
+            <input id="lead-modal-name" name="name" type="text" class="lead-strip-input" placeholder="Your name" autocomplete="name" required/>
+            <label class="sr-only" for="lead-modal-email">Work email</label>
+            <input id="lead-modal-email" name="email" type="email" class="lead-strip-input" placeholder="Work email" autocomplete="email" required/>
+          </div>
+          <label class="sr-only" for="lead-modal-company">Company (optional)</label>
+          <input id="lead-modal-company" name="company" type="text" class="lead-strip-input" placeholder="Company (optional)" autocomplete="organization"/>
+          <label class="lead-modal-notes-label" for="lead-modal-note">Notes <span class="lead-modal-notes-opt">(optional)</span></label>
+          <textarea id="lead-modal-note" name="note" class="lead-strip-input lead-modal-notes" rows="4" placeholder="Facility type, goals, timeline, or anything else we should know…" autocomplete="off"></textarea>
+          <button type="submit" class="lead-modal-submit">Get started &rarr;</button>
+          <p class="lead-form-hint lead-modal-hint">We typically respond within one business day. No spam.</p>
+          <p id="lead-modal-status" class="lead-form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

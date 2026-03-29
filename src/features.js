@@ -285,47 +285,51 @@ export function init() {
     if (!e.target.closest('.nav-item.has-menu')) closeAllMenus();
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeAllMenus();
-      closeNavDrawer();
-    }
-  });
-
   const zohoLeadFormSrc = import.meta.env.VITE_ZOHO_LEAD_FORM_URL?.trim();
   const leadMount = document.getElementById('lead-form-mount');
-  if (zohoLeadFormSrc && leadMount) {
-    leadMount.innerHTML = '';
+  const leadModalMount = document.getElementById('lead-form-modal-mount');
+
+  function mountZohoLeadIframe(mountEl) {
+    if (!mountEl || !zohoLeadFormSrc) return;
+    mountEl.innerHTML = '';
     const iframe = document.createElement('iframe');
     iframe.className = 'zoho-lead-iframe';
     iframe.title = 'Request a consultation';
     iframe.setAttribute('loading', 'lazy');
     iframe.referrerPolicy = 'no-referrer-when-downgrade';
     iframe.src = zohoLeadFormSrc;
-    leadMount.appendChild(iframe);
+    mountEl.appendChild(iframe);
+  }
+
+  if (zohoLeadFormSrc) {
+    mountZohoLeadIframe(leadMount);
+    mountZohoLeadIframe(leadModalMount);
   }
 
   const leadForm = document.getElementById('lead-form');
   const leadStatus = document.getElementById('lead-status');
+  const leadFormModal = document.getElementById('lead-form-modal');
+  const leadModalStatus = document.getElementById('lead-modal-status');
   const leadEndpoint = import.meta.env.VITE_LEAD_ENDPOINT;
 
-  if (leadForm && leadStatus) {
-    leadForm.addEventListener('submit', async (e) => {
+  function bindLeadForm(formEl, statusEl) {
+    if (!formEl || !statusEl) return;
+    formEl.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = leadForm.querySelector('#lead-name')?.value?.trim() ?? '';
-      const email = leadForm.querySelector('#lead-email')?.value?.trim() ?? '';
-      const company = leadForm.querySelector('#lead-company')?.value?.trim() ?? '';
-      const note = leadForm.querySelector('#lead-note')?.value?.trim() ?? '';
+      const name = formEl.querySelector('[name="name"]')?.value?.trim() ?? '';
+      const email = formEl.querySelector('[name="email"]')?.value?.trim() ?? '';
+      const company = formEl.querySelector('[name="company"]')?.value?.trim() ?? '';
+      const note = formEl.querySelector('[name="note"]')?.value?.trim() ?? '';
 
       if (!leadEndpoint) {
-        leadStatus.textContent =
+        statusEl.textContent =
           'Lead capture is not configured yet. Set VITE_ZOHO_LEAD_FORM_URL (Zoho embed) or VITE_LEAD_ENDPOINT (API).';
         return;
       }
 
-      const submitBtn = leadForm.querySelector('button[type="submit"]');
+      const submitBtn = formEl.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
-      leadStatus.textContent = 'Sending…';
+      statusEl.textContent = 'Sending…';
 
       try {
         const res = await fetch(leadEndpoint, {
@@ -334,13 +338,69 @@ export function init() {
           body: JSON.stringify({ name, email, company, note }),
         });
         if (!res.ok) throw new Error(String(res.status));
-        leadStatus.textContent = 'Thanks — we will be in touch shortly.';
-        leadForm.reset();
+        statusEl.textContent = 'Thanks — we will be in touch shortly.';
+        formEl.reset();
       } catch {
-        leadStatus.textContent = 'Something went wrong. Please try again or email us directly.';
+        statusEl.textContent = 'Something went wrong. Please try again or email us directly.';
       } finally {
         if (submitBtn) submitBtn.disabled = false;
       }
     });
   }
+
+  bindLeadForm(leadForm, leadStatus);
+  bindLeadForm(leadFormModal, leadModalStatus);
+
+  const leadModal = document.getElementById('lead-modal');
+  const leadModalBackdrop = leadModal?.querySelector('.lead-modal-backdrop');
+  const leadModalClose = leadModal?.querySelector('.lead-modal-close');
+  let leadModalReturnFocus = null;
+
+  function closeLeadModal() {
+    if (!leadModal || leadModal.hasAttribute('hidden')) return;
+    leadModal.setAttribute('hidden', '');
+    leadModal.classList.remove('lead-modal--open');
+    document.body.classList.remove('lead-modal-open');
+    const back = leadModalReturnFocus;
+    leadModalReturnFocus = null;
+    if (back && typeof back.focus === 'function') {
+      window.requestAnimationFrame(() => back.focus());
+    }
+  }
+
+  function openLeadModal() {
+    if (!leadModal) return;
+    closeNavDrawer();
+    closeAllMenus();
+    leadModalReturnFocus = document.activeElement;
+    leadModal.removeAttribute('hidden');
+    window.requestAnimationFrame(() => {
+      leadModal.classList.add('lead-modal--open');
+      document.body.classList.add('lead-modal-open');
+      const firstField = leadModal.querySelector('.lead-strip-input');
+      if (firstField) firstField.focus();
+      else leadModalClose?.focus();
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    const opener = e.target.closest('.js-open-lead-modal');
+    if (!opener) return;
+    e.preventDefault();
+    openLeadModal();
+  });
+
+  leadModalBackdrop?.addEventListener('click', closeLeadModal);
+  leadModalClose?.addEventListener('click', closeLeadModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (leadModal && !leadModal.hasAttribute('hidden')) {
+        closeLeadModal();
+        return;
+      }
+      closeAllMenus();
+      closeNavDrawer();
+    }
+  });
 }
