@@ -1041,6 +1041,17 @@ a:hover .arr{transform:translateX(3px)}
 .sw-deco::before{content:'';position:absolute;right:-8%;top:-20%;width:min(420px,55vw);height:min(420px,55vw);border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(6,182,212,.07) 0%,rgba(100,1,227,.04) 38%,transparent 68%);pointer-events:none;z-index:0}
 .sw-deco .si{position:relative;z-index:1}
 
+/* Tighter gap below hero; bottom matches top */
+#the-problem.sw{padding-top:72px;padding-bottom:72px}
+
+#the-problem > .si > .reveal:first-child{
+  text-align:center;
+}
+#the-problem > .si > .reveal:first-child .lead{
+  margin-left:auto;
+  margin-right:auto;
+}
+
 .problem-stat-grid{
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
@@ -1052,6 +1063,24 @@ a:hover .arr{transform:translateX(3px)}
   padding:0 clamp(16px,5vw,36px);
   text-align:center;
   position:relative;
+}
+/* Match stats `.sn`: brand gradient on first two columns, navy on third */
+.problem-stat-val{
+  font-size:clamp(28px,4.2vw,38px);
+  font-weight:800;
+  letter-spacing:-.04em;
+  line-height:1;
+  margin-bottom:8px;
+}
+.problem-stat-cell:nth-child(1) .problem-stat-val,
+.problem-stat-cell:nth-child(2) .problem-stat-val{
+  background:var(--grad-brand-text);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.problem-stat-cell:nth-child(3) .problem-stat-val{
+  color:var(--navy);
 }
 /* Mid column: vertical rules in 3-col layout only (no inline borders — those beat mobile overrides) */
 .problem-stat-cell--mid{
@@ -1269,6 +1298,7 @@ a:hover .arr{transform:translateX(3px)}
   .mega-col-wide{flex:1 1 45%}
   .mega-featured{flex:1 1 45%;margin-top:20px;padding:20px 0 0!important;border-left:none;border-top:1px solid var(--border)}
   .sw{padding:80px var(--page-gutter-x)}
+  #the-problem.sw{padding-top:52px;padding-bottom:52px}
   .stats-in{padding:0 var(--page-gutter-x);box-sizing:border-box}
   .sc{padding:44px 28px}
   .infra-g{gap:48px}
@@ -1450,6 +1480,7 @@ a:hover .arr{transform:translateX(3px)}
   .sc+.sc{border-top:1px solid var(--border)}
   .sc+.sc::before{display:none}
   .sw{padding:clamp(48px,10vw,72px) var(--page-gutter-x);box-sizing:border-box}
+  #the-problem.sw{padding-top:clamp(36px,8vw,52px);padding-bottom:clamp(36px,8vw,52px)}
   .si{padding-left:0;padding-right:0;box-sizing:border-box}
   .h2{font-size:clamp(26px,7.5vw,40px)}
   .lead{font-size:15.5px}
