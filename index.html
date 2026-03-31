@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X9E927ZTYE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X9E927ZTYE');
+</script>
 <style>
 /* ── Cited stat tooltips ── */
 .cited{position:relative;display:inline-block}
@@ -163,7 +172,7 @@
         <div class="mega-feat-tag">For Researchers &amp; Builders</div>
         <div class="mega-feat-title">Building the Ground Truth for Physical Space AI</div>
         <p class="mega-feat-p">Our Spatial Knowledge Graph is the foundation for the next generation of world models and embodied AI.</p>
-        <a href="#" class="mega-feat-link">Explore research collaboration &rarr;</a>
+        <a href="#contact" class="mega-feat-link js-open-lead-modal" data-lead-modal-title="Research collaboration" data-lead-modal-placeholder="Research focus, institution, dataset needs, or what you&rsquo;d like to explore with us&hellip;" data-lead-source="Research collaboration">Explore research collaboration &rarr;</a>
       </div>
     </div>
   </div>
@@ -274,8 +283,7 @@
     <div class="reveal">
       <span class="chip"><span class="chip-d"></span>The problem</span>
       <h2 class="h2" id="problem-heading">Physical space is the most<br />underutilized data asset in the world.</h2>
-      <p class="lead">Hospitals, campuses, and airports generate massive amounts of operational data &mdash; but most of it is never captured, connected, or acted upon intelligently.</p>
-    </div>
+      <p class="lead">Corporate or enterprise buildings like hospitals, university campuses, and airports generate massive amounts of operational data &mdash; but most of it is never captured, connected, or acted upon intelligently.</p>
     <div class="problem-benchmark reveal d1" style="margin-top:40px;padding-top:40px;border-top:1px solid var(--border)">
       <div class="problem-stat-grid">
         <div class="problem-stat-cell">
@@ -295,6 +303,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </section>
 
@@ -305,10 +314,17 @@
       <div class="twin-split-row">
         <div class="twin-section-top reveal">
           <header class="twin-intro-stage">
-            <span class="chip twin-chip"><span class="chip-d"></span>One model for every system</span>
+            <span class="chip twin-chip"><span class="chip-d"></span>The Living 4D World Model</span>
             <h2 class="h2" id="twin-heading">SiteIQ transforms your facility into a Living 4D <br />World Model.</h2>
-            <p class="lead twin-lead">A continuously updated, AI-annotated digital representation that unifies every system into one source of truth.</p>
-            <p class="twin-closing-line">Every square foot measured, managed, and continuously improved &mdash; automatically.</p>
+            <p class="lead twin-lead">A continuously updated digital representation that unifies:</p>
+            <p class="twin-pillars-label">Four Pillars</p>
+            <div class="twin-dimension-pills" role="list" aria-label="Model dimensions">
+              <span class="pill" role="listitem">Space</span>
+              <span class="pill" role="listitem">Behavior</span>
+              <span class="pill" role="listitem">Cost</span>
+              <span class="pill" role="listitem">Outcome</span>
+            </div>
+            <p class="twin-closing-line">So, every square foot is measured, managed, and continuously improved - automatically.</p>
           </header>
         </div>
         <div class="twin-visual-wrap reveal d1">
@@ -319,7 +335,6 @@
               <img class="twin-static-art" src="/twin-static.png" width="1024" height="807" alt="Spatial knowledge graph visualization: wireframe campus volumes, mapping status, and fleet telemetry on a dark grid." loading="lazy" decoding="async"/>
             </div>
             <p class="twin-visual-hint twin-visual-hint--static">Digital twin visualization</p>
-            <p class="twin-visual-note"><span>Space</span><span aria-hidden="true">&middot;</span><span>Behavior</span><span aria-hidden="true">&middot;</span><span>Cost</span><span aria-hidden="true">&middot;</span><span>Outcome</span></p>
           </div>
         </div>
       </div>
@@ -332,7 +347,8 @@
   </div>
 </section>
 
-<!-- STATS -->
+<!-- STAT SECTION 2: full-width stats strip (10–25% / 70–75% / 2–4 wks) — temporarily removed; uncomment block below to restore -->
+<!--
 <div class="stats">
   <div class="stats-in">
     <div class="sc reveal">
@@ -379,22 +395,31 @@
     </div>
   </div>
 </div>
+-->
 
 <!-- INFRASTRUCTURE -->
 <section class="sw sw-deco" style="background:#fff">
   <div class="si">
-    <div class="infra-g">
+    <div class="infra-g infra-g--vcenter">
       <div class="reveal">
-        <span class="chip"><span class="chip-d"></span>One Intelligence Infrastructure</span>
-        <h2 class="h2">Start with one problem. Expand across your entire facility.</h2>
+        <span class="chip"><span class="chip-d"></span>One Intelligence Infrastructure &mdash; Multiple Entry Points</span>
+        <h2 class="h2">Start anywhere.</h2>
         <p class="lead">SiteIQ is not a bundle of separate tools. It is one spatial intelligence infrastructure with multiple entry points. Every module runs on the same Spatial Knowledge Graph &mdash; a continuously updated map of every space, system, and asset in your building &mdash; so each one you add makes all the others smarter. Add one module. Benefit across all.</p>
-      </div>
-      <div class="layers reveal d1">
-        <div class="layer"><div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3m-4.2-7.8-2.1 2.1M6.3 17.7l-2.1 2.1m14.4 0-2.1-2.1M6.3 6.3 4.2 4.2"/></svg></div><div><div class="layer-name">AI and Intelligence</div><div class="layer-sub">Runs through everything</div></div></div>
-        <div class="layer"><div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div><div class="layer-name">Command Center</div><div class="layer-sub">The cross-system cockpit &mdash; what needs attention right now</div></div></div>
-        <div class="layer"><div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="layer-name">Four Operational Modules</div><div class="layer-sub">Where work gets done</div></div></div>
-        <div class="layer"><div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></div><div><div class="layer-name">Spatial Knowledge 3D Model</div><div class="layer-sub">The shared foundation</div></div></div>
         <div class="infra-note">Most facility teams start with one urgent problem &mdash; energy costs or robot management. Start with your problem. Expand when you are ready.</div>
+      </div>
+      <div class="layers-stack">
+        <div class="layers">
+        <div class="layers-head reveal">
+          <p class="layers-heading">Architecture Layers</p>
+          <p class="layers-head-sub">How intelligence stacks in your facility</p>
+        </div>
+        <div class="layers-body layers-body--spine">
+        <div class="layer reveal"><div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3m-4.2-7.8-2.1 2.1M6.3 17.7l-2.1 2.1m14.4 0-2.1-2.1M6.3 6.3 4.2 4.2"/></svg></div><div><div class="layer-name">AI and Intelligence</div><div class="layer-sub">Runs through everything</div></div></div>
+        <div class="layer reveal d1"><div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div><div class="layer-name">Command Center</div><div class="layer-sub">The command center &mdash; what needs attention right now</div></div></div>
+        <div class="layer reveal d2"><div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="layer-name">Seven Operational Modules</div><div class="layer-sub">Where work gets done</div></div></div>
+        <div class="layer reveal d3"><div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></div><div><div class="layer-name">Spatial Knowledge 3D Model</div><div class="layer-sub">The shared foundation</div></div></div>
+        </div>
+        </div>
       </div>
     </div>
   </div>
@@ -404,105 +429,33 @@
 <section class="sw agents-bg" id="ai-agents" aria-labelledby="agents-heading">
   <div class="si">
     <div class="agents-head reveal">
-      <span class="chip"><span class="chip-d"></span>AI and Intelligence &mdash; the intelligence layer behind everything</span>
-      <h2 class="h2" id="agents-heading">Four AI Agents. One Closed Loop. Fully Automated.</h2>
-      <p class="lead">Four specialized AI agents operate as a closed-loop system that continuously: observe &rarr; interpret &rarr; decide &rarr; execute &rarr; communicate. No manual coordination. No fragmented tools.</p>
+      <span class="chip"><span class="chip-d"></span>AI &amp; Intelligence - The Reasoning Engine</span>
+      <h2 class="h2" id="agents-heading">The reasoning engine powering<br/>every layer of SiteIQ.</h2>
+      <p class="lead agents-lead-top">Four specialized AI agents &mdash; Capture, Application, Orchestration, and Interaction &mdash; all operating as a closed-loop system that continuously:</p>
+      <div class="agents-loop-frame"><div class="loop reveal"><div class="lsep">Observe</div><span class="loop-arr" aria-hidden="true"></span><div class="lsep">Interpret</div><span class="loop-arr" aria-hidden="true"></span><div class="lsep">Decide</div><span class="loop-arr" aria-hidden="true"></span><div class="lsep">Execute</div><span class="loop-arr" aria-hidden="true"></span><div class="lsep">Communicate</div></div></div>
+      <p class="lead agents-lead-foot"><strong>No manual coordination. No fragmented tools.</strong></p>
     </div>
     <div class="ag-grid">
-      <div class="ag reveal"><div class="ag-n">01</div><div class="ag-name">Capture Agent</div><div class="ag-role">The Librarian</div><p class="ag-p">Continuously ingests data from robots, IoT sensors, and building systems &mdash; detecting structural changes, environmental signals, and anomalies. Keeps the digital model always current and trustworthy.</p></div>
-      <div class="ag reveal d1"><div class="ag-n">02</div><div class="ag-name">Application Agent</div><div class="ag-role">The Domain Expert</div><p class="ag-p">Transforms raw building data into operational intelligence &mdash; quantifying cost, risk, and performance impact. Identifies inefficiencies and hidden opportunities.</p></div>
-      <div class="ag reveal d2"><div class="ag-n">03</div><div class="ag-name">Orchestration Agent</div><div class="ag-role">The Coordinator</div><p class="ag-p">Turns decisions into real-world execution &mdash; dispatching robots, managing work orders, and optimizing across constraints like battery, traffic, priorities, and SLAs. The right resource at the right time, automatically.</p></div>
-      <div class="ag reveal d3"><div class="ag-n">04</div><div class="ag-name">Interaction Agent</div><div class="ag-role">The Translator</div><p class="ag-p">Connects intelligence to humans. Delivers insights through GenUIX &mdash; a natural, role-aware interface. Converts human intent into executable system actions and ensures decisions reach the right person at the right moment.</p></div>
+      <div class="ag reveal"><div class="ag-n">01</div><div class="ag-heading"><span class="ag-name">Capture Agent</span><span class="ag-dash">&mdash;</span><span class="ag-role">The Librarian</span></div><p class="ag-p">Continuously observes the Spatial Knowledge Graph; detects structural changes, environmental signals, and anomalies; ingests data from robots, IoT sensors, and building systems &mdash; keeping the digital model current and trustworthy.</p></div>
+      <div class="ag reveal d1"><div class="ag-n">02</div><div class="ag-heading"><span class="ag-name">Application Agent</span><span class="ag-dash">&mdash;</span><span class="ag-role">The Domain Expert</span></div><p class="ag-p">Transforms data into operational intelligence; quantifies cost, risk, and performance impact; identifies inefficiencies and hidden opportunities.</p></div>
+      <div class="ag reveal d2"><div class="ag-n">03</div><div class="ag-heading"><span class="ag-name">Orchestration Agent</span><span class="ag-dash">&mdash;</span><span class="ag-role">The Coordinator</span></div><p class="ag-p">Turns decisions into real-world execution. Coordinates robots, systems, and workflows; optimizes across battery, traffic, priorities, and SLAs; dispatches the right resource at the right time &mdash; automatically.</p></div>
+      <div class="ag reveal d3"><div class="ag-n">04</div><div class="ag-heading"><span class="ag-name">Interaction Agent</span><span class="ag-dash">&mdash;</span><span class="ag-role">The Translator</span></div><p class="ag-p">Connects intelligence to humans. Delivers insights via GenUIX &mdash; a natural, agent-based interface. Converts human intent into executable system actions; ensures decisions reach the right person at the right moment.</p></div>
     </div>
-    <div class="loop reveal"><div class="lsep">Observe</div><div class="lsep">Interpret</div><div class="lsep">Decide</div><div class="lsep">Execute</div><div class="lsep">Communicate</div></div>
-    <div class="ai-caps reveal"><span class="ai-cap">Failure Predictive</span><span class="ai-cap">Demand Forecasting</span><span class="ai-cap">Optimization Engine</span><span class="ai-cap">Scenario Simulation</span></div>
-    <p style="text-align:center;font-size:14px;color:var(--muted);margin-top:16px;font-style:italic">The result: not just insights, but financially accountable actions.</p>
-  </div>
-</section>
-
-<!-- MODULES -->
-<section class="sw sw-deco" style="background:#fff">
-  <div class="si">
-    <div class="mod-head">
-      <div class="reveal"><span class="chip"><span class="chip-d"></span>Operational Modules</span><h2 class="h2">Four operational modules &mdash;<br/>where work gets done.</h2></div>
-      <div class="reveal d1"><p class="mod-note">The four operational modules are what SiteIQ ships today. Because the Spatial Intelligence Knowledge Graph is open infrastructure, new modules can be built on top of it &mdash; by your team, by SiteIQ, or by ecosystem partners &mdash; without rebuilding the data layer from scratch.</p></div>
-    </div>
-    <div class="feat-grid reveal">
-      <div class="fc fc-v1 fc-white"><div class="m1"></div><div class="m2"></div><div class="fc-shimmer"></div><div><div class="fc-tag">AI Cleaning Operations Software</div><div class="fc-title">AI-optimized cleaning for mixed robot and custodian teams.</div><p class="fc-p">Occupancy-aware dispatch replaces fixed schedules &mdash; sending the right robot or custodian to where work is actually needed right now. Every completed mission feeds back into the Spatial Knowledge Graph, so the next dispatch is smarter. Task management, robot dispatch, cleaning insights, and consumable tracking &mdash; all connected to real-time space usage data.</p></div><div><div class="fc-metric">33%</div>
-  <div class="fc-ml">restroom labor reduction via occupancy dispatch <span class="cited" style="vertical-align:middle"><span class="cited-mark" style="font-size:10px">⁴</span><span class="cited-tip tip-r"><strong>Kimberly-Clark Onvation study &mdash; 10 facilities</strong>IoT-triggered cleaning dispatch based on real-time occupancy. 33% reduction in restroom cleaning labor across 10 measured facilities. Mechanism matches SiteIQ&rsquo;s occupancy-based dispatch directly.<br><br>Net platform cleaning savings range: 8&ndash;18% after full program costs (Alliance Maintenance &middot; SourceAmerica &middot; ISSA).</span></span></div></div></div>
-      <div class="fc fc-v2 fc-white"><div class="m1"></div><div class="m2"></div><div class="fc-shimmer"></div><div><div class="fc-tag">Building Monitoring</div><div class="fc-title">Every sensor. Every system. One real-time view.</div><p class="fc-p">Environmental sensors, equipment status, and system health &mdash; unified in real time, analyzed continuously, and surfaced as prioritized alerts routed to the right person. Every alert links directly to Asset Management &mdash; one click to a work order, no re-entry required.<br/><br/>&rarr; Issues surfaced before they become emergencies</p></div><div><div class="fc-metric">No surprises.</div><div class="fc-ml">No blind spots.</div></div></div>
-      <div class="fc fc-v3 fc-white"><div class="m1"></div><div class="m2"></div><div class="fc-shimmer"></div><div><div class="fc-tag">Facility Asset Management &amp; CMMS</div><div class="fc-title">Full lifecycle control of every asset in your facility.</div><p class="fc-p">Work orders, preventive maintenance schedules, service history, fault management, status and location, utilization tracking, and lifecycle cost &mdash; for every robot, HVAC unit, IoT device, and piece of equipment you manage. Every cost ties back to the Spatial Knowledge Graph, so you always know where every asset is and what it is costing you.<br/><br/>&rarr; Reactive repair replaced by planned maintenance</p></div><div><div class="fc-metric">70&ndash;75%</div>
-  <div class="fc-ml">fewer HVAC breakdowns with predictive maintenance <span class="cited" style="vertical-align:middle"><span class="cited-mark" style="font-size:10px">²</span><span class="cited-tip tip-r"><strong>Es-Sakali et al. 2022, Energy Reports (peer-reviewed)</strong>70&ndash;75% reduction in HVAC breakdown frequency. MTTR reduced 50%. Shifts maintenance from reactive firefighting to planned prevention. Hover the stat bar above for full citation.</span></span></div></div></div>
-      <div class="fc fc-v4"><div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(100,1,227,.06);pointer-events:none"></div><div><div class="fc-tag">Energy Intelligence</div><div class="fc-title">Cut energy bills. Not comfort.</div><p class="fc-p">Coincidence peak demand forecasting, smart edge AI devices for HVAC and lighting zone control, submetering, and energy optimization &mdash; without replacing your existing HVAC or lighting equipment.</p></div><div><div class="fc-metric">10&ndash;25%</div>
-  <div class="fc-ml">energy cost reduction &mdash; savings trajectory visible within 90 days <span class="cited" style="vertical-align:middle"><span class="cited-mark" style="font-size:10px">¹</span><span class="cited-tip tip-r"><strong>Katipamula et al. 2021 &middot; PNNL-25985 &middot; ACEEE 2025</strong>Validated across 151 real buildings. Savings trajectory visible within 90 days; fully verified over 12 months per IPMVP protocol. Hover stat ¹ above for full sources.</span></span></div></div></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ENERGY INTELLIGENCE DEEP DIVE -->
-<section class="sw" style="background:var(--bg);border-top:1px solid var(--border)">
-  <div class="si">
-    <div class="infra-g">
-      <div class="reveal">
-        <span class="chip"><span class="chip-d"></span>Energy Intelligence</span>
-        <h2 class="h2">Reduce Commercial Building Energy Costs 10&ndash;25% &mdash; Without Touching a Thermostat.</h2>
-        <p class="lead" style="margin-bottom:24px">SiteIQ connects to your existing HVAC and lighting systems and continuously adjusts them using live occupancy data, weather forecasts, grid pricing, and energy demand signals. <strong style="color:var(--ink2);font-weight:600">No fixed schedules. No guesswork. No equipment replacement.</strong></p>
-        <div class="brand-soft-card">
-          <div style="font-size:28px;font-weight:700;letter-spacing:-.04em;color:var(--purple);margin-bottom:4px">10&ndash;25%</div>
-          <div style="font-size:13px;color:var(--muted)">
-    reduction in energy costs &mdash; savings trajectory visible within 90 days, fully verified over 12 months per IPMVP protocol.
-    <span class="cited" style="display:inline-block;margin-left:4px">
-      <span class="cited-mark">¹ View sources</span>
-      <span class="cited-tip">
-        <strong>Katipamula et al. 2021 &middot; PNNL-25985 &middot; ACEEE 2025</strong>
-        12% median across 151 real buildings (PNNL/DOE). 23&ndash;30% from advanced controls across 14 building types (PNNL-25985). 10&ndash;25% for large commercial buildings (ACEEE BEMCS 2025). IPMVP = International Performance Measurement and Verification Protocol.<br><br>
-        <a href="https://www.osti.gov/biblio/1829706" target="_blank">osti.gov/biblio/1829706</a>
-      </span>
-    </span>
-  </div>
-        </div>
-        <a href="#" style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--purple);text-decoration:none">See Energy Intelligence <span class="arr">&rarr;</span></a>
-      </div>
-      <div class="reveal d1">
-        <div style="margin-bottom:20px">
-          <div style="font-family:var(--font-label);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)">What the system does</div>
-          <div class="layers">
-            <div class="layer">
-              <div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
-              <div><div class="layer-name">Real-time HVAC and lighting optimization</div><div class="layer-sub">Dynamically adjusted based on live occupancy and usage patterns</div></div>
-            </div>
-            <div class="layer">
-              <div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-              <div><div class="layer-name">Peak demand prevention</div><div class="layer-sub">Forecasts demand spikes before they occur and automatically reduces load</div></div>
-            </div>
-            <div class="layer">
-              <div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
-              <div><div class="layer-name">Continuous optimization</div><div class="layer-sub">Energy performance improves over time &mdash; not just when manually adjusted</div></div>
-            </div>
-            <div class="layer">
-              <div class="layer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-              <div><div class="layer-name">Full-system coordination</div><div class="layer-sub">Aligns energy usage with cleaning schedules and building activity patterns</div></div>
-            </div>
-          </div>
-        </div>
-        <div style="font-family:var(--font-label);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)">Energy Management System (EMS) Capabilities</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div style="padding:11px 14px;border-radius:9px;background:#fff;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-weight:500">Energy dashboard &amp; KPI tracking</div>
-          <div style="padding:11px 14px;border-radius:9px;background:#fff;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-weight:500">Zone-level submetering &amp; load monitoring</div>
-          <div style="padding:11px 14px;border-radius:9px;background:#fff;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-weight:500">Occupancy-aware lighting control</div>
-          <div style="padding:11px 14px;border-radius:9px;background:#fff;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-weight:500">HVAC optimization</div>
-          <div style="padding:11px 14px;border-radius:9px;background:#fff;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-weight:500">Peak demand forecasting &amp; automated response</div>
-          <div style="padding:11px 14px;border-radius:9px;background:#fff;border:1px solid var(--border);font-size:13px;color:var(--ink2);font-weight:500">Always-on optimization engine</div>
-        </div>
-      </div>
+    <div class="ai-caps-wrap reveal">
+      <h3 class="ai-caps-title">AI Capabilities</h3>
+      <div class="ai-caps"><span class="ai-cap">Failure Predictive</span><span class="ai-cap">Demand Forecasting</span><span class="ai-cap">Optimization Engine</span><span class="ai-cap">Scenario Simulation</span></div>
+      <p class="ai-caps-tagline">Now what you have is not just insights but financially accountable actions.</p>
     </div>
   </div>
 </section>
 
 <!-- COMMAND CENTER SHOWCASE -->
-<section class="sw cc-showcase" style="background:#fff;border-top:1px solid var(--border)">
+<section class="sw cc-showcase" id="command-center-showcase" style="background:#fff;border-top:1px solid var(--border)">
   <div class="si">
+    <div class="cc-showcase-head reveal">
+      <span class="chip cc-showcase-chip"><span class="chip-d"></span>Command Center &mdash; the cross-system cockpit</span>
+      <h2 class="h2 cc-showcase-h2">The command center &mdash; see and address what needs your attention right now.</h2>
+    </div>
     <div class="cc-showcase-grid">
       <!-- UI Mockup (right on desktop; below copy on mobile) -->
       <div class="cc-showcase-mock reveal">
@@ -533,17 +486,212 @@
             </div>
           </div>
         </div>
+        <div class="cc-genx-note cc-genx-note--mock">Powered by GenUIX, so every user sees the interface relevant to their role and current task.</div>
       </div>
       <div class="cc-showcase-copy reveal d1">
-        <span class="chip cc-showcase-chip"><span class="chip-d"></span>Facility Command Center &mdash; one screen for everything</span>
-        <h2 class="h2 cc-showcase-h2">See everything happening in your facility &mdash; right now.</h2>
-        <p class="lead cc-showcase-lead" style="margin-bottom:24px">Your default view every morning. The only place with a global view across every module, every team, and every building. Active issues, today&rsquo;s work across all teams, the AI daily brief, and your KPI snapshot &mdash; in one screen. No switching between systems.</p>
-
-        <div class="cc-genx-note">
-          Powered by GenUIX &mdash; the AI-driven interface that adapts to each user&rsquo;s role automatically. No configuration required.
+        <p class="lead cc-showcase-lead">The only place with a global view. Active issues, today&rsquo;s work across all teams, the AI daily brief, and your KPI snapshot &mdash; in one screen.</p>
+        <div class="cc-inside">
+          <h3 class="cc-showcase-sub">What&rsquo;s inside</h3>
+          <ul class="cc-inside-list">
+            <li>
+              <span class="cc-inside-title">Overview dashboard</span>
+              <span class="cc-inside-desc">The only global view across every module, team, and building</span>
+            </li>
+            <li>
+              <span class="cc-inside-title">Active issues</span>
+              <span class="cc-inside-desc">Faults, alerts, and anomalies &mdash; surfaced, prioritized, and assigned</span>
+            </li>
+            <li>
+              <span class="cc-inside-title">Today&rsquo;s work</span>
+              <span class="cc-inside-desc">Every task across every team in one unified list</span>
+            </li>
+            <li>
+              <span class="cc-inside-title">AI daily brief</span>
+              <span class="cc-inside-desc">What the AI noticed overnight and recommends for today</span>
+            </li>
+            <li>
+              <span class="cc-inside-title">KPI snapshot</span>
+              <span class="cc-inside-desc">Energy, cleaning, asset health, and compliance &mdash; at a glance</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ENERGY INTELLIGENCE DEEP DIVE -->
+<section class="sw ei-deep" id="energy-intelligence" style="background:var(--bg);border-top:1px solid var(--border)">
+  <div class="si">
+    <div class="ei-fold">
+      <header class="ei-fold-intro reveal">
+        <div class="ei-head">
+          <span class="chip"><span class="chip-d"></span>Energy Intelligence &mdash; Deep Dive</span>
+          <h2 class="h2 ei-fold-h2">Reduce energy cost &mdash; without sacrificing comfort.</h2>
+          <p class="energy-intel-sub">Make energy decisions based on reality, not assumptions</p>
+        </div>
+        <div class="ei-body">
+          <p class="ei-body-lead">The Energy Intelligence module connects directly with cleaning operations, building systems, and the Spatial Knowledge 3D Model &mdash; giving the system real-time awareness of:</p>
+          <div class="ei-awareness-pills" role="list">
+            <div class="ei-awareness-pill" role="listitem">Where people actually are</div>
+            <div class="ei-awareness-pill" role="listitem">How space is being used</div>
+            <div class="ei-awareness-pill ei-awareness-pill--demand" role="listitem">How demand is changing moment by moment</div>
+          </div>
+          <p class="ei-body-para">By combining this with external signals like weather, grid conditions, and energy pricing, SiteIQ continuously adjusts HVAC and lighting in real time.</p>
+          <p class="ei-strong-dek"><strong>No fixed schedules. No guesswork.</strong></p>
+        </div>
+      </header>
+
+      <div class="ei-fold-detail reveal d2">
+        <div class="ei-detail-panel">
+          <div class="ei-detail-col ei-detail-col--does">
+            <div class="ei-label">What the system does</div>
+            <div class="ei-does" role="list">
+              <article class="ei-does-item" role="listitem">
+                <div class="ei-does-card">
+                  <h3 class="ei-does-title">Real-time energy orchestration</h3>
+                  <p class="ei-does-desc">HVAC and lighting dynamically adjust based on live occupancy and usage patterns</p>
+                </div>
+              </article>
+              <article class="ei-does-item" role="listitem">
+                <div class="ei-does-card">
+                  <h3 class="ei-does-title">Peak demand prevention</h3>
+                  <p class="ei-does-desc">Forecasts demand spikes before they occur and automatically reduces load</p>
+                </div>
+              </article>
+              <article class="ei-does-item" role="listitem">
+                <div class="ei-does-card">
+                  <h3 class="ei-does-title">Continuous optimization</h3>
+                  <p class="ei-does-desc">Energy performance is continuously improved &mdash; not just scheduled or reactive</p>
+                </div>
+              </article>
+              <article class="ei-does-item" role="listitem">
+                <div class="ei-does-card">
+                  <h3 class="ei-does-title">Full-system coordination</h3>
+                  <p class="ei-does-desc">Aligns energy usage with cleaning operations and building activity</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="ei-fold-caps reveal d1" aria-labelledby="ei-cap-subhead">
+            <p class="ei-cap-subhead" id="ei-cap-subhead">Core capabilities</p>
+            <div class="ei-cap-bento" role="list">
+              <div class="ei-cap-pill" role="listitem">Zone-level submetering &amp; load monitoring</div>
+              <div class="ei-cap-pill" role="listitem">Energy dashboard &amp; KPI tracking</div>
+              <div class="ei-cap-pill" role="listitem">HVAC optimization</div>
+              <div class="ei-cap-pill" role="listitem">Always-on optimization engine</div>
+              <div class="ei-cap-pill" role="listitem">Occupancy-aware lighting control</div>
+              <div class="ei-cap-pill" role="listitem">Peak demand forecasting &amp; automated response</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ei-wide-band">
+    <div class="si">
+      <!-- Stat: V4 cites 15–45% within 120 days — validate with product. -->
+      <div class="ei-wide-inner reveal">
+        <div class="ei-wide-stat">
+          <div class="ei-label">Proven impact</div>
+          <div class="ei-impact-stat">15&ndash;45%</div>
+          <p class="ei-impact-copy">reduction in energy costs within 120 days</p>
+          <a href="#" class="ei-cta">See Energy Intelligence <span class="arr">&rarr;</span></a>
+        </div>
+        <div class="ei-wide-rule" aria-hidden="true"></div>
+        <div class="ei-wide-extend">
+          <p class="ei-built-p">The seven operational modules are what SiteIQ ships today. Because the Spatial Intelligence Knowledge Graph is open infrastructure, new modules can be built on top of it &mdash; by your team, by SiteIQ, or by ecosystem partners &mdash; without rebuilding the data layer from scratch.</p>
+          <a href="#" class="ei-built-link">Explore the platform <span class="arr">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="sw sw-deco" id="operational-modules" aria-labelledby="operational-modules-heading" aria-describedby="operational-modules-hint" style="background:#fff;border-top:1px solid var(--border)">
+  <div class="si">
+    <div class="mod-head">
+      <div class="reveal">
+        <span class="chip"><span class="chip-d"></span>Operational modules</span>
+        <h2 class="h2" id="operational-modules-heading">Where work gets done</h2>
+        <p class="om-sub">Seven integrated modules. One Spatial Knowledge Graph. Start with what you need today, expand as you grow.</p>
+      </div>
+    </div>
+    <div class="om-tabs reveal">
+      <div class="om-tabs-bar" role="tablist" aria-label="Operational modules">
+        <button type="button" class="om-tab is-active" role="tab" id="om-tab-1" aria-selected="true" aria-controls="om-panel-1" tabindex="0"><span class="om-tab-num">01</span><span class="om-tab-label">Module 1 &mdash; Command Center</span></button>
+        <button type="button" class="om-tab" role="tab" id="om-tab-2" aria-selected="false" aria-controls="om-panel-2" tabindex="-1"><span class="om-tab-num">02</span><span class="om-tab-label">Module 2 &mdash; Space Model</span></button>
+        <button type="button" class="om-tab" role="tab" id="om-tab-3" aria-selected="false" aria-controls="om-panel-3" tabindex="-1"><span class="om-tab-num">03</span><span class="om-tab-label">Module 3 &mdash; Cleaning Operations</span></button>
+        <button type="button" class="om-tab" role="tab" id="om-tab-4" aria-selected="false" aria-controls="om-panel-4" tabindex="-1"><span class="om-tab-num">04</span><span class="om-tab-label">Module 4 &mdash; Building Monitoring</span></button>
+        <button type="button" class="om-tab" role="tab" id="om-tab-5" aria-selected="false" aria-controls="om-panel-5" tabindex="-1"><span class="om-tab-num">05</span><span class="om-tab-label">Module 5 &mdash; Asset Management</span></button>
+        <button type="button" class="om-tab" role="tab" id="om-tab-6" aria-selected="false" aria-controls="om-panel-6" tabindex="-1"><span class="om-tab-num">06</span><span class="om-tab-label">Module 6 &mdash; Energy Intelligence</span></button>
+        <button type="button" class="om-tab" role="tab" id="om-tab-7" aria-selected="false" aria-controls="om-panel-7" tabindex="-1"><span class="om-tab-num">07</span><span class="om-tab-label">Module 7 &mdash; AI and Intelligence Layer</span></button>
+      </div>
+      <div class="om-tabs-panels">
+        <div id="om-panel-1" class="om-panel" role="tabpanel" aria-labelledby="om-tab-1">
+          <div class="om-panel-inner">
+            <h3 class="om-panel-h">Everything that needs your attention, right now.</h3>
+            <p class="om-panel-body">Your default landing every morning. One screen shows active issues, today&rsquo;s work across every team, your AI daily brief, and your KPI snapshot. No switching between systems.</p>
+            <div class="om-panel-callout om-panel-callout--benefit"><span class="om-panel-callout-text">&rarr; From reactive to proactive in one dashboard</span></div>
+          </div>
+        </div>
+        <div id="om-panel-2" class="om-panel" role="tabpanel" aria-labelledby="om-tab-2" hidden>
+          <div class="om-panel-inner">
+            <h3 class="om-panel-h">The living 4D map of your entire facility.</h3>
+            <p class="om-panel-body">2D maps and 3D digital twin of every building, floor, and zone. Layer your robots, assets, energy systems, and environmental data on top. Simulate changes before you make them.</p>
+            <div class="om-panel-callout om-panel-callout--benefit"><span class="om-panel-callout-text">&rarr; One ground truth for every decision</span></div>
+          </div>
+        </div>
+        <div id="om-panel-3" class="om-panel" role="tabpanel" aria-labelledby="om-tab-3" hidden>
+          <div class="om-panel-inner">
+            <h3 class="om-panel-h">AI-optimized cleaning for mixed robot and custodian teams.</h3>
+            <p class="om-panel-body">Task management, robot dispatch, cleaning insights, and consumable tracking &mdash; all connected to real-time space usage data. The right person or robot in the right place at the right time.</p>
+            <div class="om-panel-callout om-panel-callout--metric">
+              <span class="om-panel-metric">20&ndash;35%</span>
+              <span class="om-panel-metric-sub">cleaning efficiency improvement</span>
+            </div>
+          </div>
+        </div>
+        <div id="om-panel-4" class="om-panel" role="tabpanel" aria-labelledby="om-tab-4" hidden>
+          <div class="om-panel-inner">
+            <h3 class="om-panel-h">Every sensor. Every system. One real-time view.</h3>
+            <p class="om-panel-body">Environmental sensors, equipment status, and system health streams &mdash; unified and continuously analyzed. Alerts reach the right person before problems become emergencies.</p>
+            <div class="om-panel-callout om-panel-callout--metric">
+              <span class="om-panel-metric om-panel-metric--phrase">No surprises.</span>
+              <span class="om-panel-metric-sub">No blind spots.</span>
+            </div>
+          </div>
+        </div>
+        <div id="om-panel-5" class="om-panel" role="tabpanel" aria-labelledby="om-tab-5" hidden>
+          <div class="om-panel-inner">
+            <h3 class="om-panel-h">Full lifecycle control of every asset in your facility.</h3>
+            <p class="om-panel-body">Work orders, preventive maintenance schedules, service history, fault management, status and location, utilization tracking, and lifecycle cost &mdash; for every robot, HVAC unit, IoT device, and piece of equipment you manage.</p>
+            <div class="om-panel-callout om-panel-callout--benefit"><span class="om-panel-callout-text">&rarr; From reactive repair to planned maintenance</span></div>
+          </div>
+        </div>
+        <div id="om-panel-6" class="om-panel om-panel--energy" role="tabpanel" aria-labelledby="om-tab-6" hidden>
+          <div class="om-panel-inner">
+            <h3 class="om-panel-h">Cut energy bills. Not comfort.</h3>
+            <p class="om-panel-body">Coincidence peak demand forecasting, smart edge AI devices for HVAC and lighting zone control, submetering, and energy optimization &mdash; without replacing your existing equipment.</p>
+            <div class="om-panel-callout om-panel-callout--metric">
+              <span class="om-panel-metric">15&ndash;45%</span>
+              <span class="om-panel-metric-sub">energy cost reduction</span>
+            </div>
+          </div>
+        </div>
+        <div id="om-panel-7" class="om-panel om-panel--capstone" role="tabpanel" aria-labelledby="om-tab-7" hidden>
+          <div class="om-panel-inner">
+            <h3 class="om-panel-h">The intelligence that runs across everything.</h3>
+            <p class="om-panel-body">Capture, Application, Orchestration, and Interaction agents operate continuously across every module &mdash; one closed loop from observation to execution. Intelligence is not bolted on; it runs through Command Center, the Space Model, and every operational surface.</p>
+            <div class="om-panel-callout om-panel-callout--benefit"><span class="om-panel-callout-text">&rarr; Observe, interpret, decide, execute, communicate</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="om-acc-hint reveal" id="operational-modules-hint">Select a module tab above. Use left and right arrow keys when a tab is focused.</p>
+
   </div>
 </section>
 
@@ -566,20 +714,33 @@
         <div><div class="aud-panel-title">For Facility Managers</div><p class="aud-panel-desc">Energy costs, cleaning operations, robot management, asset tracking, maintenance, compliance &mdash; I need practical outcomes, measurable ROI, and hardware and software that work together out of the box.</p></div>
         <a href="#" class="btn-hero-p" style="white-space:nowrap;font-size:14px;padding:11px 22px">See solutions for facilities <span class="arr">&rarr;</span></a>
       </div>
-      <div class="tile-g">
-        <button class="tile" onclick="showR(0,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>How to reduce commercial building energy costs</button>
-        <button class="tile" onclick="showR(1,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>AI-powered cleaning operations &mdash; automate and optimize</button>
-        <button class="tile" onclick="showR(2,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>Real-time asset tracking and predictive maintenance</button>
-        <button class="tile" onclick="showR(3,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>Predict equipment failures 2&ndash;4 weeks before they happen</button>
-        <button class="tile" onclick="showR(4,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8l-2 6.3-6.4 2.1 2-6.3z"/></svg></div>Unified robot fleet management &mdash; all manufacturers, one screen</button>
-        <button class="tile" onclick="showR(5,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>IFMA, OSHA, and Joint Commission compliance &mdash; automated</button>
+      <div style="margin-bottom:18px">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:8px">Find your problem</div>
+        <div style="font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.025em;line-height:1.3">Click your biggest headache. We&rsquo;ll show you the solution.</div>
+        <p style="font-size:13.5px;color:var(--muted);margin-top:6px">Most visitors come with one urgent problem. Start there. The rest of the platform is there when you need it.</p>
       </div>
-      <div id="r0" class="res-panel"><div class="res-h">Energy Intelligence</div><p class="res-p">Our AI edge devices connect to your existing HVAC and lighting systems &mdash; no replacement required. Coincidence peak demand forecasting reduces peak-hour costs automatically. Smart zone control turns off energy in unoccupied areas without anyone touching a thermostat. Buildings average 10&ndash;25% energy cost reduction &mdash; trajectory visible within 90 days, verified over 12 months.</p><a href="#" class="res-lnk">See Energy Intelligence <span class="arr">&rarr;</span></a></div>
-      <div id="r1" class="res-panel"><div class="res-h">Cleaning Operations</div><p class="res-p">SiteIQ replaces fixed cleaning schedules with a real-time model of how your spaces are actually used. The right custodian or robot goes to the right zone at the right time &mdash; based on actual occupancy, not a calendar. Costs go down. Cleaning standards go up. And you have GPS-verified proof of every floor serviced.</p><a href="#" class="res-lnk">See Cleaning Operations <span class="arr">&rarr;</span></a></div>
-      <div id="r2" class="res-panel"><div class="res-h">Asset Management</div><p class="res-p">Every robot, HVAC unit, IoT device, and piece of equipment in your facility &mdash; tracked in real time. Location, utilization rate, service history, and failure risk in one view. You stop guessing which assets to replace and start making capital decisions on actual condition data.</p><a href="#" class="res-lnk">See Asset Management <span class="arr">&rarr;</span></a></div>
-      <div id="r3" class="res-panel"><div class="res-h">Building Monitoring &amp; Predictive Maintenance</div><p class="res-p">Sensor data from HVAC systems, elevators, and critical building systems is continuously analyzed for failure signatures. SiteIQ surfaces warnings 2&ndash;4 weeks before breakdowns occur &mdash; shifting your maintenance team from reactive firefighters to proactive operators. Work orders are generated automatically. Technicians arrive prepared. Emergency repair costs drop significantly.</p><a href="#" class="res-lnk">See Building Monitoring and Asset Management <span class="arr">&rarr;</span></a></div>
-      <div id="r4" class="res-panel"><div class="res-h">Robot Chaos &mdash; Unified Fleet Management</div><p class="res-p">SiteIQ is hardware-agnostic &mdash; it manages robots from all leading manufacturers in one unified platform. Route optimization, battery management, obstacle avoidance using live occupancy data from the Space Model, and performance analytics across your entire fleet. One screen. Full control. And because every robot feeds data back into the Spatial Knowledge Graph, your cleaning operations and your building intelligence get smarter with every mission.</p><a href="#" class="res-lnk">See Cleaning Operations <span class="arr">&rarr;</span></a></div>
-      <div id="r5" class="res-panel"><div class="res-h">Compliance and Audits</div><p class="res-p">When an auditor arrives, you walk in with a live, accurate record &mdash; not a binder assembled under pressure. SiteIQ continuously maps your facility against IFMA, APPA, OSHA, and Joint Commission standards, surfacing gaps as they appear. No manual inspections. No scrambling before a review.</p><a href="#" class="res-lnk">See AI Digital Twin <span class="arr">&rarr;</span></a></div>
+      <div class="tile-g">
+        <button class="tile" onclick="showR(0,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>Energy bills &mdash; Too high, unpredictable</button>
+        <button class="tile" onclick="showR(1,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>Cleaning and labor costs &mdash; Inefficient, hard to scale</button>
+        <button class="tile" onclick="showR(2,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>Assets and equipment &mdash; No visibility to status or utilization rate</button>
+        <button class="tile" onclick="showR(3,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>Reactive maintenance &mdash; Always firefighting failures</button>
+        <button class="tile" onclick="showR(4,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8l-2 6.3-6.4 2.1 2-6.3z"/></svg></div>Robot chaos &mdash; Multiple platforms, no unified control</button>
+        <button class="tile" onclick="showR(5,this)"><div class="tile-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>Compliance and audits &mdash; No live insights, manual records, high risk</button>
+      </div>
+      <div id="fm-problem-drawer" class="fm-problem-drawer fm-problem-drawer--inline" hidden aria-hidden="true">
+        <div class="fm-problem-drawer-panel" role="region" aria-labelledby="fm-problem-drawer-title" tabindex="-1">
+          <div class="fm-problem-drawer-head">
+            <h2 id="fm-problem-drawer-title" class="fm-problem-drawer-title"></h2>
+            <button type="button" class="fm-problem-drawer-close" aria-label="Close">
+              <svg class="lead-modal-close-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="fm-problem-drawer-body"></div>
+          <div class="fm-problem-drawer-cta-wrap">
+            <a href="#" class="res-lnk" id="fm-problem-drawer-cta"></a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="aud-ai" class="aud-panel reveal">
@@ -614,17 +775,17 @@
   <div class="si">
     <div class="hw-head hw-head--stack">
       <div class="reveal">
-        <span class="chip"><span class="chip-d"></span>Hardware purpose-built for intelligent buildings &mdash; sold, supported, and managed by SiteIQ</span>
-        <h2 class="h2">Every robot and sensor we sell feeds directly into your building&rsquo;s AI platform &mdash; no integration required.</h2>
-        <p class="lead">SiteIQ is the only facility intelligence infrastructure that also sells, supports, and repairs the hardware. The robots and IoT sensors you buy from us feed data directly into Building Monitoring. Your 3D scanning hardware initializes the Space Model. No integration projects. No third-party middleware. One vendor. One platform. One source of truth.</p>
+        <span class="chip"><span class="chip-d"></span>Hardware built for SiteIQ &mdash; and managed by it</span>
+        <h2 class="h2">Every robot and device we sell connects directly to the Spatial Intelligence Infrastructure.</h2>
+        <p class="lead">SiteIQ is the only facility intelligence infrastructure that also sells, supports, and repairs the hardware. The robots and IoT sensors you buy from us feed data directly into the Building Monitoring. Your 3D scanning hardware initializes the Space Model. No integration projects. No third-party middleware. One vendor. One platform. One source of truth.</p>
       </div>
     </div>
     <div class="hw-grid">
-      <div class="hw reveal"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3"/><path d="M12 8v1m0 6v1M8 12h1m6 0h1"/></svg></div><div class="hw-tag">Cleaning Robots</div><div class="hw-name">Autonomous Floor Care</div><p class="hw-p">Commercial autonomous scrubbers, sweepers, and vacuums &mdash; for every floor type and facility size. Seamlessly integrated and managed through the Spatial Knowledge Platform.</p><a href="#" class="mega-feat-link">View cleaning robots <span class="arr">&rarr;</span></a></div>
-      <div class="hw reveal d1"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div><div class="hw-tag">Outdoor Robots</div><div class="hw-name">Autonomous Grounds Care</div><p class="hw-p">Autonomous lawn care, snow removal, leaf management, and load towing &mdash; for campuses, healthcare grounds, and commercial properties.</p><a href="#" class="mega-feat-link">View outdoor robots <span class="arr">&rarr;</span></a></div>
-      <div class="hw reveal d2"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></div><div class="hw-tag">3D Scanning Hardware</div><div class="hw-name">LiDAR &amp; Spatial Cameras</div><p class="hw-p">Professional LiDAR scanners and spatial cameras &mdash; the devices that create your facility&rsquo;s living digital twin.</p><a href="#" class="mega-feat-link">View scanning hardware <span class="arr">&rarr;</span></a></div>
-      <div class="hw reveal"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div><div class="hw-tag">IoT &amp; Connectivity</div><div class="hw-name">Smart Building Sensors</div><p class="hw-p">Environmental sensors, dash cameras, water leak sensors, asset tags, edge AI devices, and 5G connectivity modules &mdash; the infrastructure that makes your building readable.</p><a href="#" class="mega-feat-link">View IoT hardware <span class="arr">&rarr;</span></a></div>
-      <div class="hw reveal d1"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg></div><div class="hw-tag">AI Energy Saving Controller</div><div class="hw-name">AI Energy Management Controller &mdash; EMS AI</div><p class="hw-p">The infrastructure that makes your building energy efficient &mdash; without replacing your existing systems.</p><a href="#" class="mega-feat-link">View AI edge HVAC controller <span class="arr">&rarr;</span></a></div>
+      <div class="hw reveal"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3"/><path d="M12 8v1m0 6v1M8 12h1m6 0h1"/></svg></div><div class="hw-tag">Cleaning Robots</div><div class="hw-name">Autonomous Floor Care</div><p class="hw-p">Commercial autonomous scrubbers, sweepers, and vacuums from Gausium, PUDU, and CenoBots &mdash; for every floor type and facility size.</p></div>
+      <div class="hw reveal d1"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div><div class="hw-tag">Outdoor Robots</div><div class="hw-name">Autonomous Grounds Care</div><p class="hw-p">Yarbo autonomous lawn care, snow removal, leaf management, and load towing &mdash; for campuses, healthcare grounds, and commercial properties.</p></div>
+      <div class="hw reveal d2"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></div><div class="hw-tag">3D Scanning Hardware</div><div class="hw-name">LiDAR &amp; Spatial Cameras</div><p class="hw-p">Xgrids professional LiDAR scanners and spatial cameras &mdash; the devices that create your facility&rsquo;s digital twin.</p></div>
+      <div class="hw reveal"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div><div class="hw-tag">IoT &amp; Connectivity</div><div class="hw-name">Smart Building Sensors</div><p class="hw-p">Environmental sensors, dash cameras, water leak sensors, asset tags, edge AI devices, and 5G connectivity modules &mdash; the infrastructure that makes your building readable.</p></div>
+      <div class="hw reveal d1"><div class="hw-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg></div><div class="hw-tag">AI Edge HVAC Controller</div><div class="hw-name">EMS AI</div><p class="hw-p">Plant level control unit and EMS AI &mdash; the infrastructure that makes your building energy efficient.</p></div>
     </div>
   </div>
 </section>
@@ -632,9 +793,9 @@
 <!-- PROOF -->
 <div class="proof-w">
   <div class="proof-in">
-    <p class="proof-lbl">Trusted by facility managers across healthcare, higher education, airports, and commercial real estate</p>
+    <p class="proof-lbl">Trusted across facility types and industries</p>
     <div class="pills">
-      <span class="pill">University Campuses</span><span class="pill">Healthcare Systems</span><span class="pill">K&ndash;12 School Districts</span><span class="pill">CMMS Replacement</span><span class="pill">Airports</span><span class="pill">IFMA Partners</span><span class="pill">Robotics Ecosystem</span><span class="pill">ESG Frameworks</span><span class="pill">University Research Partners</span>
+      <span class="pill">University Campuses</span><span class="pill">Healthcare Systems</span><span class="pill">K&ndash;12 School Districts</span><span class="pill">Airports</span><span class="pill">IFMA Partners</span><span class="pill">Robotics Ecosystem</span><span class="pill">ESG Frameworks</span><span class="pill">University Research Partners</span>
     </div>
   </div>
 </div>
@@ -644,11 +805,11 @@
   <div class="si">
     <div class="res-grid">
       <div class="reveal">
-        <span class="chip"><span class="chip-d"></span>For AI researchers, spatial AI teams, and world model builders</span>
-        <h2 class="h2">We are building the ground truth dataset for physical space AI and embodied robotics.</h2>
-        <p class="lead">Our Spatial Knowledge Graph &mdash; a continuously updated 4D map of physical space &mdash; is built from autonomous robots, IoT networks, and computer vision systems across real deployed facilities. Every building we instrument adds to a compounding data asset that no single-building research deployment can replicate. We work with universities on synthetic data generation, spatial AI modeling, and embodied AI research.</p>
-        <div class="r-tags"><span class="r-tag">Spatial knowledge graph</span><span class="r-tag">4D living world model</span><span class="r-tag">Synthetic data generation</span><span class="r-tag">Multi-agent architecture</span><span class="r-tag">Humanoid robotics spatial layer</span><span class="r-tag">IFC and IFMA semantic ontology</span><span class="r-tag">University research partnerships</span><span class="r-tag">Physical AI ground truth</span></div>
-        <div style="margin-top:28px"><a href="#" style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--purple);text-decoration:none;transition:gap .18s">Explore research collaboration <span class="arr">&rarr;</span></a></div>
+        <span class="chip"><span class="chip-d"></span>For AI researchers and world model builders</span>
+        <h2 class="h2">We are building the ground truth for physical space AI.</h2>
+        <p class="lead">Our Spatial Knowledge Graph is continuously updated by autonomous robots, IoT networks, and computer vision systems across real deployed facilities. Every building we instrument adds to a compounding data asset that no single-building research deployment can replicate. We work with universities on synthetic data generation, spatial AI modeling, and embodied AI research.</p>
+        <div class="r-tags"><span class="r-tag">Spatial knowledge graph</span><span class="r-tag">4D living world model</span><span class="r-tag">Synthetic data generation</span><span class="r-tag">Multi-agent architecture</span><span class="r-tag">Humanoid robotics spatial layer</span><span class="r-tag">IFC and IFMA semantic ontology</span><span class="r-tag">University research partnerships</span></div>
+        <div style="margin-top:28px"><a href="#contact" class="js-open-lead-modal res-lnk" data-lead-modal-title="Research collaboration" data-lead-modal-placeholder="Research focus, institution, dataset needs, or what you&rsquo;d like to explore with us&hellip;" data-lead-source="Research collaboration">Explore research collaboration <span class="arr">&rarr;</span></a></div>
       </div>
       <div class="quote-card reveal d1">
         <div class="qm1"></div><div class="qm2"></div>
@@ -791,6 +952,7 @@
     <div class="lead-modal-body">
       <div id="lead-form-modal-mount" class="lead-form-mount">
         <form id="lead-form-modal" class="lead-form-native" style="display:flex;flex-direction:column;gap:10px" method="post" action="#">
+          <input type="hidden" name="lead_source" id="lead-modal-source" value=""/>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
             <label class="sr-only" for="lead-modal-name">Name</label>
             <input id="lead-modal-name" name="name" type="text" class="lead-strip-input" placeholder="Your name" autocomplete="name" required/>

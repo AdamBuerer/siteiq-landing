@@ -20,12 +20,132 @@ export function init() {
     if (p) p.classList.add('active');
   }
 
+  const FM_PROBLEM_CONTENT = [
+    {
+      title: 'Energy Intelligence',
+      bodyHtml:
+        '<p class="res-p">Our AI edge devices connect to your existing HVAC and lighting systems &mdash; no replacement required. Coincident peak demand forecasting reduces peak-hour costs automatically. Smart zone control turns off energy in unoccupied areas without anyone touching a thermostat. Customers average 15&ndash;45% energy cost reduction within 120 days.</p>',
+      ctaLabel: 'See energy intelligence',
+      ctaHref: '#',
+    },
+    {
+      title: 'Cleaning Operations',
+      bodyHtml:
+        '<p class="res-p">Most cleaning operations run on fixed schedules with no connection to how spaces are actually being used. SiteIQ changes that. Our 3D digital twin and Spatial Knowledge Graph give you an accurate, real-time model of every space in your facility &mdash; which zones are high-traffic, which are rarely used, how usage patterns shift by day and season. We use that spatial intelligence to simulate and optimize your entire cleaning workload: the right mix of custodians and cleaning robots, assigned to the right areas, at the right times. The result is an optimized schedule built on actual space usage data &mdash; not assumptions. Your staff spend their time where human judgment matters. Robots handle the routine. Costs go down. Standards go up.</p>',
+      ctaLabel: 'See cleaning operations',
+      ctaHref: '#',
+    },
+    {
+      title: 'Asset Management',
+      bodyHtml:
+        '<p class="res-p">Most facility teams have a rough idea of what equipment they own &mdash; but no real visibility into where it is right now, how heavily it is being used, or whether it is due for replacement. SiteIQ&rsquo;s IoT monitoring and Spatial Knowledge Graph create a real-time map of every piece of equipment across your facility. You see not just location, but utilization rate, operating condition, and replacement readiness &mdash; so capital and maintenance decisions are based on live data, not spreadsheets.</p>',
+      ctaLabel: 'See Asset Management',
+      ctaHref: '#',
+    },
+    {
+      title: 'Building Monitoring & Predictive Maintenance',
+      bodyHtml:
+        '<p class="res-p">Sensor data from HVAC systems, elevators, and critical building systems is continuously analyzed for failure signatures. SiteIQ surfaces warnings 2&ndash;4 weeks before breakdowns occur &mdash; shifting your maintenance team from reactive firefighters to proactive operators. Work orders are generated automatically. Technicians arrive prepared. Emergency repair costs drop significantly.</p>',
+      ctaLabel: 'See Building Monitoring and Asset Management',
+      ctaHref: '#',
+    },
+    {
+      title: 'Robot Chaos — Unified Fleet Management',
+      bodyHtml:
+        '<p class="res-p">SiteIQ is hardware-agnostic &mdash; it manages robots from all leading manufacturers in one unified platform. Route optimization, battery management, obstacle avoidance using live occupancy data from the Space Model, and performance analytics across your entire fleet. One screen. Full control. And because every robot feeds data back into the Spatial Knowledge Graph, your cleaning operations and your building intelligence get smarter with every mission.</p>',
+      ctaLabel: 'See Cleaning Operations',
+      ctaHref: '#',
+    },
+    {
+      title: 'Compliance and Audits',
+      bodyHtml:
+        '<p class="res-p">When an auditor arrives, you walk in with a live, accurate record &mdash; not a binder assembled under pressure. SiteIQ continuously maps your facility against IFMA, APPA, OSHA, and Joint Commission standards, surfacing gaps as they appear. No manual inspections. No scrambling before a review.</p>',
+      ctaLabel: 'See AI Digital Twin',
+      ctaHref: '#',
+    },
+  ];
+
+  const fmDrawer = document.getElementById('fm-problem-drawer');
+  const fmDrawerPanel = fmDrawer?.querySelector('.fm-problem-drawer-panel');
+  const fmDrawerClose = fmDrawer?.querySelector('.fm-problem-drawer-close');
+  const fmDrawerTitle = fmDrawer?.querySelector('#fm-problem-drawer-title');
+  const fmDrawerBody = fmDrawer?.querySelector('.fm-problem-drawer-body');
+  const fmDrawerCta = fmDrawer?.querySelector('#fm-problem-drawer-cta');
+  let fmDrawerFocusReturn = null;
+
+  function getFmDrawerFocusables() {
+    if (!fmDrawerPanel) return [];
+    return [
+      ...fmDrawerPanel.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])',
+      ),
+    ].filter((el) => !el.hasAttribute('disabled') && el.tabIndex !== -1);
+  }
+
+  function onFmDrawerPanelKeydown(e) {
+    if (!fmDrawer?.classList.contains('fm-problem-drawer--open') || e.key !== 'Tab') return;
+    const focusables = getFmDrawerFocusables();
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else if (document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  function onFmDrawerEscape(e) {
+    if (e.key !== 'Escape' || !fmDrawer?.classList.contains('fm-problem-drawer--open')) return;
+    e.preventDefault();
+    closeFmProblemDrawer();
+  }
+
+  function closeFmProblemDrawer() {
+    if (!fmDrawer) return;
+    fmDrawer.classList.remove('fm-problem-drawer--open');
+    fmDrawer.setAttribute('hidden', '');
+    fmDrawer.setAttribute('aria-hidden', 'true');
+    fmDrawerPanel?.removeEventListener('keydown', onFmDrawerPanelKeydown);
+    document.removeEventListener('keydown', onFmDrawerEscape);
+    const back = fmDrawerFocusReturn;
+    fmDrawerFocusReturn = null;
+    if (back && typeof back.focus === 'function') {
+      window.requestAnimationFrame(() => back.focus());
+    }
+  }
+
+  function openFmProblemDrawer(index, buttonEl) {
+    const data = FM_PROBLEM_CONTENT[index];
+    if (!data || !fmDrawer || !fmDrawerTitle || !fmDrawerBody || !fmDrawerCta) return;
+    document.querySelectorAll('#aud-fm .tile').forEach((x) => x.classList.remove('active'));
+    buttonEl.classList.add('active');
+    fmDrawerTitle.textContent = data.title;
+    fmDrawerBody.innerHTML = data.bodyHtml;
+    fmDrawerCta.href = data.ctaHref;
+    fmDrawerCta.innerHTML = `${data.ctaLabel} <span class="arr">&rarr;</span>`;
+    fmDrawerFocusReturn = document.activeElement;
+    fmDrawer.removeAttribute('hidden');
+    fmDrawer.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(() => {
+      fmDrawer.classList.add('fm-problem-drawer--open');
+      fmDrawerPanel?.addEventListener('keydown', onFmDrawerPanelKeydown);
+      document.addEventListener('keydown', onFmDrawerEscape);
+      window.setTimeout(() => {
+        fmDrawerClose?.focus();
+        fmDrawer?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 80);
+    });
+  }
+
+  fmDrawerClose?.addEventListener('click', () => closeFmProblemDrawer());
+
   function showR(i, b) {
-    document.querySelectorAll('.tile').forEach((x) => x.classList.remove('active'));
-    document.querySelectorAll('.res-panel').forEach((x) => x.classList.remove('active'));
-    b.classList.add('active');
-    const t = document.getElementById(`r${i}`);
-    if (t) setTimeout(() => t.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+    openFmProblemDrawer(i, b);
   }
 
   window.switchAudience = switchAudience;
@@ -319,7 +439,11 @@ export function init() {
       const name = formEl.querySelector('[name="name"]')?.value?.trim() ?? '';
       const email = formEl.querySelector('[name="email"]')?.value?.trim() ?? '';
       const company = formEl.querySelector('[name="company"]')?.value?.trim() ?? '';
-      const note = formEl.querySelector('[name="note"]')?.value?.trim() ?? '';
+      let note = formEl.querySelector('[name="note"]')?.value?.trim() ?? '';
+      const leadSource = formEl.querySelector('[name="lead_source"]')?.value?.trim() ?? '';
+      if (leadSource) {
+        note = note ? `${note}\n\n[Source: ${leadSource}]` : `[Source: ${leadSource}]`;
+      }
 
       if (!leadEndpoint) {
         statusEl.textContent =
@@ -354,13 +478,35 @@ export function init() {
   const leadModal = document.getElementById('lead-modal');
   const leadModalBackdrop = leadModal?.querySelector('.lead-modal-backdrop');
   const leadModalClose = leadModal?.querySelector('.lead-modal-close');
+  const leadModalTitleEl = document.getElementById('lead-modal-title');
+  const leadModalNoteEl = document.getElementById('lead-modal-note');
+  const leadModalSourceEl = document.getElementById('lead-modal-source');
+  const LEAD_MODAL_DEFAULT_TITLE = 'Talk to us';
+  const LEAD_MODAL_DEFAULT_PLACEHOLDER =
+    'Facility type, goals, timeline, or anything else we should know…';
   let leadModalReturnFocus = null;
+
+  function applyLeadModalContext(opener) {
+    const title = opener?.getAttribute('data-lead-modal-title')?.trim();
+    const placeholder = opener?.getAttribute('data-lead-modal-placeholder')?.trim();
+    const source = opener?.getAttribute('data-lead-source')?.trim();
+    if (leadModalTitleEl) leadModalTitleEl.textContent = title || LEAD_MODAL_DEFAULT_TITLE;
+    if (leadModalNoteEl) leadModalNoteEl.placeholder = placeholder || LEAD_MODAL_DEFAULT_PLACEHOLDER;
+    if (leadModalSourceEl) leadModalSourceEl.value = source || '';
+  }
+
+  function resetLeadModalContext() {
+    if (leadModalTitleEl) leadModalTitleEl.textContent = LEAD_MODAL_DEFAULT_TITLE;
+    if (leadModalNoteEl) leadModalNoteEl.placeholder = LEAD_MODAL_DEFAULT_PLACEHOLDER;
+    if (leadModalSourceEl) leadModalSourceEl.value = '';
+  }
 
   function closeLeadModal() {
     if (!leadModal || leadModal.hasAttribute('hidden')) return;
     leadModal.setAttribute('hidden', '');
     leadModal.classList.remove('lead-modal--open');
     document.body.classList.remove('lead-modal-open');
+    resetLeadModalContext();
     const back = leadModalReturnFocus;
     leadModalReturnFocus = null;
     if (back && typeof back.focus === 'function') {
@@ -368,11 +514,12 @@ export function init() {
     }
   }
 
-  function openLeadModal() {
+  function openLeadModal(opener) {
     if (!leadModal) return;
     closeNavDrawer();
     closeAllMenus();
     leadModalReturnFocus = document.activeElement;
+    applyLeadModalContext(opener);
     leadModal.removeAttribute('hidden');
     window.requestAnimationFrame(() => {
       leadModal.classList.add('lead-modal--open');
@@ -387,7 +534,7 @@ export function init() {
     const opener = e.target.closest('.js-open-lead-modal');
     if (!opener) return;
     e.preventDefault();
-    openLeadModal();
+    openLeadModal(opener);
   });
 
   leadModalBackdrop?.addEventListener('click', closeLeadModal);
@@ -403,4 +550,56 @@ export function init() {
       closeNavDrawer();
     }
   });
+
+  const omTabs = document.querySelector('.om-tabs');
+  if (omTabs) {
+    const tabs = [...omTabs.querySelectorAll('[role="tab"]')];
+    const panels = [...omTabs.querySelectorAll('[role="tabpanel"]')];
+    const tablist = omTabs.querySelector('[role="tablist"]');
+
+    function activateOmModule(index, { focusTab } = { focusTab: false }) {
+      const i = Math.max(0, Math.min(tabs.length - 1, index));
+      tabs.forEach((tab, j) => {
+        const selected = j === i;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.classList.toggle('is-active', selected);
+        tab.setAttribute('tabindex', selected ? '0' : '-1');
+      });
+      panels.forEach((panel, j) => {
+        if (j === i) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+      });
+      if (focusTab) {
+        const t = tabs[i];
+        t?.focus();
+        t?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => activateOmModule(i));
+    });
+
+    tablist?.addEventListener('keydown', (e) => {
+      const cur = tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
+      if (cur < 0) return;
+      let next = cur;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        next = cur < tabs.length - 1 ? cur + 1 : 0;
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        next = cur > 0 ? cur - 1 : tabs.length - 1;
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        next = 0;
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        next = tabs.length - 1;
+      } else {
+        return;
+      }
+      activateOmModule(next, { focusTab: true });
+    });
+  }
 }
