@@ -433,7 +433,7 @@
       <h2 class="h2" id="agents-heading">The reasoning engine powering<br/>every layer of SiteIQ.</h2>
       <p class="lead agents-lead-top">Four specialized AI agents &mdash; Capture, Application, Orchestration, and Interaction &mdash; all operating as a closed-loop system that continuously:</p>
       <div class="agents-loop-frame" role="region" aria-label="Closed-loop reasoning steps">
-        <ol class="loop reveal">
+        <ol class="loop">
           <li class="lsep"><span class="lsep-inner"><span class="lsep-txt">Observe</span></span></li>
           <li class="lsep"><span class="lsep-inner"><span class="lsep-txt">Interpret</span></span></li>
           <li class="lsep"><span class="lsep-inner"><span class="lsep-txt">Decide</span></span></li>
@@ -977,6 +977,36 @@
         </form>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- SiteIQ assistant (asset: public/siteiq-chatbot-icon.png) -->
+<div id="siteiq-chat" class="siteiq-chat">
+  <button type="button" id="siteiq-chat-toggle" class="siteiq-chat-fab" aria-expanded="false" aria-controls="siteiq-chat-panel" aria-label="Open SiteIQ assistant">
+    <span class="siteiq-chat-fab-ring" aria-hidden="true"></span>
+    <span class="siteiq-chat-fab-well" aria-hidden="true">
+      <img src="/siteiq-chatbot-icon.png" alt="" class="siteiq-chat-fab-img" width="56" height="56" decoding="async"/>
+    </span>
+  </button>
+  <div id="siteiq-chat-panel" class="siteiq-chat-panel" hidden role="dialog" aria-modal="true" aria-labelledby="siteiq-chat-title">
+    <div class="siteiq-chat-head">
+      <div class="siteiq-chat-head-inner">
+        <img src="/siteiq-chatbot-icon.png" alt="" class="siteiq-chat-head-ic" width="40" height="40" decoding="async"/>
+        <div class="siteiq-chat-head-text">
+          <h2 id="siteiq-chat-title" class="siteiq-chat-title">SiteIQ Assistant</h2>
+          <p class="siteiq-chat-sub">Ask about the platform, modules, or getting started.</p>
+        </div>
+      </div>
+      <button type="button" id="siteiq-chat-close" class="siteiq-chat-close" aria-label="Close assistant">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="siteiq-chat-messages" class="siteiq-chat-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+    <form id="siteiq-chat-form" class="siteiq-chat-form">
+      <label class="sr-only" for="siteiq-chat-input">Message</label>
+      <textarea id="siteiq-chat-input" class="siteiq-chat-input" rows="1" placeholder="Ask anything…" autocomplete="off"></textarea>
+      <button type="submit" class="siteiq-chat-send">Send</button>
+    </form>
   </div>
 </div>
 </body>

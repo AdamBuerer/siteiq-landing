@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "assemble": "node scripts/assemble-index.mjs",
-    "dev": "vite",
+    "dev": "vite --port 5174 --strictPort",
     "dev:home": "vite --mode home --port 5174 --strictPort",
     "build": "vite build",
     "build:home": "vite build --mode home",

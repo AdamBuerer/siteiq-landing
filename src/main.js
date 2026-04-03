@@ -1,5 +1,7 @@
 import './styles.css';
 import { initLidarCanvas } from './lidar-canvas.js';
+import { init } from './features.js';
+import { initSiteChat } from './siteiq-chat.js';
 
 const isHomeOnly = import.meta.env.VITE_HOME_ONLY === 'true';
 if (isHomeOnly) {
@@ -20,4 +22,5 @@ document.documentElement.classList.add('js-ready');
 document.body.classList.add('js-ready');
 
 initLidarCanvas();
-void import('./features.js').then((m) => m.init());
+init();
+initSiteChat();

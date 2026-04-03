@@ -6,6 +6,12 @@ export default defineConfig(({ mode }) => {
   const ogImage = env.VITE_OG_IMAGE || `${site}/og-image.svg`;
 
   return {
+    server: {
+      port: 5174,
+      strictPort: true,
+      // Listen on IPv4 + IPv6 so http://localhost:5174/ works when localhost → 127.0.0.1
+      host: true,
+    },
     build: {
       target: 'es2020',
       cssMinify: true,
